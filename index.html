@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script defer type="module" src="./js/index.js"></script>
+    <title>Tesfaye's Reusable-Comment-Component</title>
+  </head>
+  <body>
+    <header id="header">
+      <h1>Reuseble component</h1>
+    </header>
+    <section class="main-container">
+      <user-comment
+        name="Mike"
+        email="Mike@gmail.com"
+        comment="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      ></user-comment> 
+      <user-comment
+        name="Katie"
+        email="katie@gmail.com"
+        comment="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      ></user-comment>
+      <form id="form" action="/">
+        <div class="input-control">
+          <label for="username" class="label">Username</label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            placeholder="Insert your name..."
+          />
+          <div class="error"></div>
+        </div>
+        <div class="input-control">
+          <label for="email" class="label">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="text"
+            placeholder="example@domain.com"
+          />
+          <div class="error"></div>
+        </div>
+        <div class="input-control">
+          <textarea
+            id="comment"
+            cols="50"
+            rows="4"
+            placeholder="Please insert your comments..."
+          ></textarea>
+          <div class="error"></div>
+        </div>
+        <button type="submit">Add comment</button>
+      </form>
+    </section>
+    <footer class="footer">
+      <h3 class="footer__text">Copyright, Tesfaye Eshetie, 2022</h3>
+    </footer>
+  </body>
+</html>

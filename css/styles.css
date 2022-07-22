@@ -1,0 +1,144 @@
+:root {
+  --clr-primary: #e8e0eb;
+  --clr-secondery: #aee0ec;
+  --clr-tertiary: #c0ebeb;
+  --clr-dark: #17173b;
+  --clr-light: #f5f5f5;
+  --fw-normal: 400;
+  --fw-bold: 700;
+  --fw-black: 900;
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+#header {
+  background-color: var(--clr-dark);
+  width: 100vw;
+  min-height: 8rem;
+  color: var(--clr-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#header h1 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: var(--fw-black);
+  letter-spacing: 0.2rem;
+  text-shadow: 2px 2px var(--clr-secondery);
+  text-align: center;
+  padding: 1rem 0.5rem;
+}
+
+.main-container {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+  gap: 1rem;
+  width: 100vw;
+  min-height: calc(100vh - 14rem);
+  padding: 2rem 4rem;
+}
+.main-container user-comment {
+  background-image: linear-gradient( var(--clr-tertiary), var(--clr-primary) );
+  width: 26rem;
+  min-height: 22rem;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+#form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: whitesmoke;
+  width: 26rem;
+  min-height: 22rem;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+#form button {
+  font-size: .9rem;
+  font-weight: 700;
+  padding: .8em 1.6em;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #3498db;
+  border-radius: 0.6em;
+  cursor: pointer;
+  border-color: #3498db;
+  color: #fff;
+}
+#form button:hover {
+  background-color: var(--clr-light);
+  color: var(--clr-dark);
+}
+
+.input-control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: .6rem;
+}
+.input-control input,
+.input-control textarea {
+  cursor: pointer;
+  border: 2px solid #f0f0f0;
+  border-radius: 6px;
+  display: block;
+  font-size: 12px;
+  padding: 8px;
+}
+
+.input-control input:focus,
+.input-control textarea:focus {
+  outline: 0;
+}
+
+.input-control.success input,
+.input-control.success textarea {
+  border-color: #09c372;
+}
+.input-control.error input,
+.input-control.error textarea {
+  border-color: #ff3860;
+}
+.input-control .error {
+  color: #ff3860;
+  font-size: 9px;
+  height: 13px;
+}
+
+.input-control #username,
+.input-control #email,
+.input-control #comment {
+  width: 20rem;
+}
+.input-control .label {
+  font-weight: 700;
+}
+
+.footer {
+  background-color: var(--clr-dark);
+  color: var(--clr-light);
+  width: 100vw;
+  min-height: 6rem;
+}
+.footer__text {
+  text-align: center;
+  font-weight: var(--fw-bold);
+  padding: 3rem;
+}
