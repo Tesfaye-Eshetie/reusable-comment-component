@@ -57,7 +57,7 @@ body {
   background-image: linear-gradient( var(--clr-tertiary), var(--clr-primary) );
   width: 26rem;
   min-height: 22rem;
-  border-radius: 1rem;
+  border-radius: .6rem;
   padding: 1.5rem;
 }
 #form {
