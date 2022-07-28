@@ -71,6 +71,10 @@ body {
   border-radius: 1rem;
   padding: 1.5rem;
 }
+#form p {
+  font-size: .8rem;
+  color: #080707;
+}
 #form button {
   font-size: .9rem;
   font-weight: 700;
@@ -130,7 +134,25 @@ body {
 .input-control .label {
   font-weight: 700;
 }
-
+.input-check {
+  display: flex;
+  width: 26rem;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  position: relative;
+ }
+.input-check .error {
+  color: #ff3860;
+  font-size: 9px;
+  height: 13px;
+  position: absolute;
+  left: .5rem;
+  bottom: -1rem;
+}
+ input[type="checkbox" i] {
+  width: 2rem;
+  margin-right: .5rem;
+ }
 .footer {
   background-color: var(--clr-dark);
   color: var(--clr-light);
