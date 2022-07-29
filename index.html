@@ -20,27 +20,31 @@
     </header>
     <section class="main-container">
       <form id="form" action="/">
-        <div class="input-control">
-          <label for="username" class="label">Username</label>
-          <input
-            id="username"
-            name="username"
-            type="text"
-            placeholder="Insert your name..."
-          />
-          <div class="error"></div>
+        <div class="input-flex">
+          <div class="input-control">
+            <label for="username" class="label">Username</label>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              placeholder="Insert your name..."
+            />
+            <div class="error"></div>
+          </div>
+          <div class="input-control">
+            <label for="email" class="label">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="text"
+              placeholder="example@domain.com"
+            />
+            <div class="error"></div>
+          </div>
         </div>
+
         <div class="input-control">
-          <label for="email" class="label">Email</label>
-          <input
-            id="email"
-            name="email"
-            type="text"
-            placeholder="example@domain.com"
-          />
-          <div class="error"></div>
-        </div>
-        <div class="input-control">
+          <label for="comment" class="label">Comment</label>
           <textarea
             id="comment"
             cols="50"

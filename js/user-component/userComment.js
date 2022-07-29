@@ -4,6 +4,7 @@ template.innerHTML = `
     <h3></h3>
     <h4></h4>
     <p></p>
+    <p>Commented on: ${new Date()}</p>
   </div>`;
 
 class userComment extends HTMLElement {

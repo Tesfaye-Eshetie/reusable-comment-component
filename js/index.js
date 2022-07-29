@@ -33,11 +33,7 @@ const isValidEmail = (mail) => {
   return re.test(String(mail).toLowerCase());
 };
 
-const validateInputs = () => {
-  const usernameValue = username.value.trim();
-  const emailValue = email.value.trim();
-  const commentValue = comment.value.trim();
-
+const validateInputs = (usernameValue, emailValue, commentValue) => {
   if (usernameValue === '') {
     setError(username, 'Username is required');
   } else {
@@ -81,13 +77,14 @@ form.addEventListener('submit', (e) => {
     commentValue.length <= 30 ||
     !checkbox.checked
   ) {
-    validateInputs();
+    validateInputs(usernameValue, emailValue, commentValue);
   } else {
     const user = document.createElement('user-comment');
     user.setAttribute('name', usernameValue);
     user.setAttribute('email', emailValue);
     user.setAttribute('comment', commentValue);
     container.appendChild(user);
+    validateInputs(usernameValue, emailValue, commentValue);
     username.value = '';
     email.value = '';
     comment.value = '';

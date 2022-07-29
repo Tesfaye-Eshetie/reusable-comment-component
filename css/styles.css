@@ -1,9 +1,9 @@
 :root {
   --clr-primary: #e8e0eb;
   --clr-secondery: #aee0ec;
-  --clr-tertiary: #c0ebeb;
+  --clr-tertiary: #444444;
   --clr-dark: #17173b;
-  --clr-light: #f5f5f5;
+  --clr-light: #eeeeee;
   --fw-normal: 400;
   --fw-bold: 700;
   --fw-black: 900;
@@ -46,39 +46,44 @@ body {
 
 .main-container {
   display: grid;
-  align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
-  gap: 1rem;
   width: 100vw;
   min-height: calc(100vh - 14rem);
   padding: 2rem 4rem;
 }
 .main-container user-comment {
-  background-image: linear-gradient( var(--clr-tertiary), var(--clr-primary) );
-  width: 26rem;
-  min-height: 22rem;
-  border-radius: .6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--clr-tertiary);
+  color: var(--clr-light);
+  width: 80%;
+  min-height: 20rem;
+  border-radius: 0.6rem;
   padding: 1.5rem;
+  margin: 1rem auto;
 }
 #form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: whitesmoke;
-  width: 26rem;
-  min-height: 22rem;
-  border-radius: 1rem;
+  background-color: var(--clr-light);
+  width: 80%;
+  min-height: 20rem;
+  border-radius: 0.6rem;
   padding: 1.5rem;
+  margin: 1rem auto;
 }
+
 #form p {
-  font-size: .8rem;
+  font-size: 0.8rem;
   color: #080707;
 }
 #form button {
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  padding: .8em 1.6em;
+  padding: 0.8em 1.6em;
+  margin-top: 1rem;
   text-align: center;
   text-transform: uppercase;
   background-color: #3498db;
@@ -95,7 +100,12 @@ body {
 .input-control {
   display: flex;
   flex-direction: column;
-  margin-bottom: .6rem;
+  margin-bottom: 0.2rem;
+}
+.input-flex {
+  display: flex;
+  justify-content: space-between;
+  width: 42rem;
 }
 .input-control input,
 .input-control textarea {
@@ -127,32 +137,32 @@ body {
 }
 
 .input-control #username,
-.input-control #email,
-.input-control #comment {
+.input-control #email {
   width: 20rem;
+}
+.input-control #comment {
+  width: 42rem;
 }
 .input-control .label {
   font-weight: 700;
 }
 .input-check {
   display: flex;
-  width: 26rem;
-  margin-left: 2rem;
-  margin-top: 1rem;
   position: relative;
- }
+  width: 42rem;
+}
 .input-check .error {
   color: #ff3860;
   font-size: 9px;
   height: 13px;
   position: absolute;
-  left: .5rem;
+  left: 0.5rem;
   bottom: -1rem;
 }
- input[type="checkbox" i] {
+input[type='checkbox' i] {
   width: 2rem;
-  margin-right: .5rem;
- }
+  margin-right: 0.5rem;
+}
 .footer {
   background-color: var(--clr-dark);
   color: var(--clr-light);
@@ -163,4 +173,21 @@ body {
   text-align: center;
   font-weight: var(--fw-bold);
   padding: 3rem;
+}
+
+@media (max-width: 60rem) {
+  #form,
+  .main-container user-comment {
+    width: 100%;
+  }
+  .input-flex {
+    flex-direction: column;
+  }
+  .input-flex,
+  .input-control #comment,
+  .input-control #username,
+  .input-control #email,
+  .input-check {
+    width: 24rem;
+  }
 }
