@@ -54,10 +54,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--clr-tertiary);
-  color: var(--clr-light);
+  background-color: var(--clr-light);
+  color: var(--clr-dark);
   width: 80%;
-  min-height: 20rem;
+  min-height: 12rem;
   border-radius: 0.6rem;
   padding: 1.5rem;
   margin: 1rem auto;
