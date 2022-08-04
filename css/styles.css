@@ -64,7 +64,6 @@ body {
 }
 #form {
   display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   background-color: var(--clr-light);
@@ -74,7 +73,14 @@ body {
   padding: 1.5rem;
   margin: 1rem auto;
 }
-
+#form_image {
+  margin: 1rem;
+  text-align: center;
+}
+#form_image img{
+  width: 26rem;
+  border-radius: 1rem;
+}
 #form p {
   font-size: 0.8rem;
   color: #080707;
@@ -104,8 +110,9 @@ body {
 }
 .input-flex {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  width: 42rem;
+  width: 24rem;
 }
 .input-control input,
 .input-control textarea {
@@ -138,10 +145,10 @@ body {
 
 .input-control #username,
 .input-control #email {
-  width: 20rem;
+  width: 24rem;
 }
 .input-control #comment {
-  width: 42rem;
+  width: 24rem;
 }
 .input-control .label {
   font-weight: 700;
@@ -149,7 +156,7 @@ body {
 .input-check {
   display: flex;
   position: relative;
-  width: 42rem;
+  width: 24rem;
 }
 .input-check .error {
   color: #ff3860;
@@ -176,18 +183,11 @@ input[type='checkbox' i] {
 }
 
 @media (max-width: 60rem) {
+  #form {
+    flex-direction: column;
+  }
   #form,
   .main-container user-comment {
     width: 100%;
   }
-  .input-flex {
-    flex-direction: column;
   }
-  .input-flex,
-  .input-control #comment,
-  .input-control #username,
-  .input-control #email,
-  .input-check {
-    width: 24rem;
-  }
-}
