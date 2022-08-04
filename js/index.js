@@ -1,4 +1,7 @@
 import userComment from './user-component/userComment';
+import { createStore, postComments, getComments } from './idb/indexedDB';
+
+createStore();
 
 window.customElements.define('user-comment', userComment);
 
@@ -79,15 +82,11 @@ form.addEventListener('submit', (e) => {
   ) {
     validateInputs(usernameValue, emailValue, commentValue);
   } else {
-    const user = document.createElement('user-comment');
-    user.setAttribute('name', usernameValue);
-    user.setAttribute('email', emailValue);
-    user.setAttribute('comment', commentValue);
-    container.appendChild(user);
-    validateInputs(usernameValue, emailValue, commentValue);
-    username.value = '';
-    email.value = '';
-    comment.value = '';
-    checkbox.checked = false;
+    postComments(usernameValue, emailValue, commentValue);
+
+    // eslint-disable-next-line no-restricted-globals
+    location.reload();
   }
 });
+
+getComments(container);
