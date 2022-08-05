@@ -8,6 +8,10 @@ h3, h4 {
 h3 {
   font-size: 1.4rem;
 }
+p {
+  font-size: .9rem;
+  line-height: 1.4rem;
+}
 strong {
   font-weight: bold;
 }

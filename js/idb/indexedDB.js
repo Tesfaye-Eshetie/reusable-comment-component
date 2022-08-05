@@ -24,7 +24,8 @@ export async function getComments(con) {
         user.setAttribute('name', res[i].name);
         user.setAttribute('email', res[i].email);
         user.setAttribute('comment', res[i].comment);
-        con.appendChild(user);
+
+        con.append(user);
       }
     }
     console.log(res);

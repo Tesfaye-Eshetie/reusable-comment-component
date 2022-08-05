@@ -5,7 +5,7 @@ createStore();
 
 window.customElements.define('user-comment', userComment);
 
-const container = document.querySelector('.main-container');
+const container = document.querySelector('.main_container');
 const form = document.querySelector('#form');
 const username = document.querySelector('#username');
 const email = document.querySelector('#email');
