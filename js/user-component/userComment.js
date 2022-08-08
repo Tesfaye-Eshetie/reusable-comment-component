@@ -15,17 +15,46 @@ p {
 strong {
   font-weight: bold;
 }
+#preference span {
+  min-width: 3rem;
+  display: inline-block;
+  text-align: center;
+}
+#preference {
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+#preference button {
+  width: 6rem;
+  height: 3rem;
+  border: none;
+  border-radius: 10px;
+  background-color: seagreen;
+  color: white;
+}
+#preference #bntDislike {
+  background-color: #ddA333;
+}
 </style>
   <div>
     <h3></h3>
     <h4></h4>
     <p><strong>Comment:</strong> <span></span></p>
     <p><strong>Commented on: </strong>${new Date()}</p>
+    <div id="preference"> 
+      <button id="bntLike">Like</button>
+      <span id="like"></span>
+      <button id="bntDislike">Dislike</button>
+      <span id="dislike"></span>
+    </div>
   </div>`;
 
 class userComment extends HTMLElement {
   constructor() {
     super();
+    this.countLikes = 0;
+    this.countDislikes = 0;
 
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
@@ -40,6 +69,25 @@ class userComment extends HTMLElement {
     ).textContent = `Email: ${this.getAttribute('email')}  `;
     this.shadowRoot.querySelector('span').textContent =
       this.getAttribute('comment');
+    this.shadowRoot.getElementById('bntLike').onclick = () => this.incLikes();
+    this.shadowRoot.getElementById('bntDislike').onclick = () =>
+      this.incDislikes();
+    this.update('like', this.countLikes);
+    this.update('dislike', this.countDislikes);
+  }
+
+  incLikes() {
+    // eslint-disable-next-line no-plusplus
+    this.update('like', ++this.countLikes);
+  }
+
+  incDislikes() {
+    // eslint-disable-next-line no-plusplus
+    this.update('dislike', ++this.countDislikes);
+  }
+
+  update(id, count) {
+    this.shadowRoot.getElementById(id).textContent = count;
   }
 }
 
