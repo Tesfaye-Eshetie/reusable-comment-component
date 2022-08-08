@@ -1,4 +1,4 @@
-import { openDB } from 'idb';
+import { openDB, deleteDB } from 'idb';
 
 export function createStore() {
   openDB('myDB', 1, {
@@ -11,12 +11,6 @@ export function createStore() {
 export async function postComments(x, y, z) {
   const db = await openDB('myDB', 1);
   db.add('store', { name: x, email: y, comment: z });
-  db.close();
-}
-
-export async function clearComments() {
-  const db = await openDB('myDB', 1);
-  db.clear('store');
   db.close();
 }
 
@@ -37,4 +31,17 @@ export async function getComments(con) {
     console.log(res);
   });
   db.close();
+}
+
+export async function clearComments() {
+  const db = await openDB('myDB', 1);
+  db.clear('store');
+  db.close();
+}
+export async function deleteMyDB() {
+  await deleteDB('myDB', {
+    blocked() {
+      console.log('deletions is successful');
+    },
+  });
 }

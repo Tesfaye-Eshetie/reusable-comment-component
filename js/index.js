@@ -3,7 +3,8 @@ import {
   createStore,
   postComments,
   getComments,
-  clearComments,
+  // clearComments,
+  deleteMyDB,
 } from './idb/indexedDB';
 
 createStore();
@@ -95,7 +96,8 @@ form.addEventListener('submit', (e) => {
 });
 
 clearButton.addEventListener('click', () => {
-  clearComments();
+  // clearComments();
+  deleteMyDB();
   window.location.reload();
 });
 
