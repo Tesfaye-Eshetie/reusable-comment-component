@@ -1,7 +1,7 @@
 import { openDB } from 'idb';
 
 export function createStore() {
-  openDB('db1', 1, {
+  openDB('myDB', 1, {
     upgrade(db) {
       db.createObjectStore('store', { autoIncrement: true });
     },
@@ -9,13 +9,19 @@ export function createStore() {
 }
 
 export async function postComments(x, y, z) {
-  const db = await openDB('db1', 1);
+  const db = await openDB('myDB', 1);
   db.add('store', { name: x, email: y, comment: z });
   db.close();
 }
 
+export async function clearComments() {
+  const db = await openDB('myDB', 1);
+  db.clear('store');
+  db.close();
+}
+
 export async function getComments(con) {
-  const db = await openDB('db1', 1);
+  const db = await openDB('myDB', 1);
   db.getAll('store').then((res) => {
     if (res.length) {
       // eslint-disable-next-line no-plusplus

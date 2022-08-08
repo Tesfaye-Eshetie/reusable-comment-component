@@ -1,5 +1,10 @@
 import userComment from './user-component/userComment';
-import { createStore, postComments, getComments } from './idb/indexedDB';
+import {
+  createStore,
+  postComments,
+  getComments,
+  clearComments,
+} from './idb/indexedDB';
 
 createStore();
 
@@ -11,6 +16,7 @@ const username = document.querySelector('#username');
 const email = document.querySelector('#email');
 const comment = document.querySelector('#comment');
 const checkbox = document.querySelector('#input-checkbox');
+const clearButton = document.querySelector('#clear_bnt');
 
 const setError = (element, message) => {
   const inputControl = element.parentElement;
@@ -84,9 +90,13 @@ form.addEventListener('submit', (e) => {
   } else {
     postComments(usernameValue, emailValue, commentValue);
 
-    // eslint-disable-next-line no-restricted-globals
-    location.reload();
+    window.location.reload();
   }
+});
+
+clearButton.addEventListener('click', () => {
+  clearComments();
+  window.location.reload();
 });
 
 getComments(container);

@@ -113,7 +113,12 @@ body {
   border-color: #3498db;
   color: #fff;
 }
-#form button:hover {
+#form #clear_bnt {
+  background-color: #dd3333;
+  border-color:#dd3333
+}
+#form button:hover,
+#form #clear_bnt:hover {
   background-color: var(--clr-light);
   color: var(--clr-dark);
 }
