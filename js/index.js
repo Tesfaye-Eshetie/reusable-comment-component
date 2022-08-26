@@ -1,13 +1,30 @@
-import userComment from './user-component/userComment';
+import userComment from './component/userComment';
 import {
-  createStore,
   postComments,
   getComments,
   // clearComments,
   deleteMyDB,
 } from './idb/indexedDB';
+import { registerSW } from 'virtual:pwa-register';
 
-createStore();
+const updateSw = registerSW({
+  onNeedRefresh() {
+    updateSw();
+    console.log('Need Refresh');
+  },
+  onOfflineReady() {
+    console.log('Offline Ready');
+  },
+  onRegistered() {
+    console.log('Registered');
+  },
+  onRegisterError(e) {
+    console.log('Register Error');
+    console.error(e);
+  },
+});
+
+// import { store } from './idb/store';
 
 window.customElements.define('user-comment', userComment);
 
@@ -89,7 +106,8 @@ form.addEventListener('submit', (e) => {
   ) {
     validateInputs(usernameValue, emailValue, commentValue);
   } else {
-    postComments(usernameValue, emailValue, commentValue);
+    const commentData = { usernameValue, emailValue, commentValue };
+    postComments(commentData, emailValue);
 
     window.location.reload();
   }

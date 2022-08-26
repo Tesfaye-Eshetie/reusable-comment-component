@@ -1,36 +1,41 @@
 import { openDB, deleteDB } from 'idb';
+import database from './database';
+import { store } from './store';
 
-export function createStore() {
-  openDB('myDB', 1, {
-    upgrade(db) {
-      db.createObjectStore('store', { autoIncrement: true });
-    },
-  });
+export async function postComments(comment, key) {
+  return (await database).put('comments', comment, key);
 }
 
-export async function postComments(x, y, z) {
-  const db = await openDB('myDB', 1);
-  db.add('store', { name: x, email: y, comment: z });
-  db.close();
-}
+const createButtons = (con) => {
+  const preference = document.createElement('div');
+  preference.innerHTML = ` <button id="bntLike">Like</button>
+  <button id="bntDislike">Dislike</button>
+  `;
+  con.append(performance);
+};
 
 export async function getComments(con) {
-  const db = await openDB('myDB', 1);
-  db.getAll('store').then((res) => {
+  return (await database).getAll('comments').then((res) => {
     if (res.length) {
-      // eslint-disable-next-line no-plusplus
       for (let i = 0; i < res.length; i++) {
         const user = document.createElement('user-comment');
-        user.setAttribute('name', res[i].name);
-        user.setAttribute('email', res[i].email);
-        user.setAttribute('comment', res[i].comment);
+        user.setAttribute('name', res[i].usernameValue);
+        user.setAttribute('email', res[i].emailValue);
+        user.setAttribute('comment', res[i].commentValue);
 
-        con.append(user);
+        const btn = document.createElement('button');
+        btn.textContent = 'Like';
+        btn.classList.add('like');
+        btn.addEventListener('click', () => {
+          store.increment();
+        });
+
+        con.append(user, btn);
+        // createButtons(con);
       }
     }
     console.log(res);
   });
-  db.close();
 }
 
 export async function clearComments() {

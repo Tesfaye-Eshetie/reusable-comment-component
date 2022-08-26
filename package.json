@@ -22,6 +22,11 @@
     "vite": "^3.0.2"
   },
   "dependencies": {
-    "idb": "^7.0.2"
+    "idb": "^7.0.2",
+    "vite-plugin-pwa": "^0.12.3",
+    "workbox-precaching": "^6.5.4",
+    "workbox-recipes": "^6.5.4",
+    "workbox-routing": "^6.5.4",
+    "workbox-strategies": "^6.5.4"
   }
 }

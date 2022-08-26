@@ -1,3 +1,5 @@
+import { store } from '../idb/store';
+
 const template = document.createElement('template');
 template.innerHTML = `
 <style>
@@ -43,21 +45,28 @@ strong {
     <p><strong>Comment:</strong> <span></span></p>
     <p><strong>Commented on: </strong>${new Date()}</p>
     <div id="preference"> 
-      <button id="bntLike">Like</button>
       <span id="like"></span>
-      <button id="bntDislike">Dislike</button>
-      <span id="dislike"></span>
     </div>
   </div>`;
 
 class userComment extends HTMLElement {
   constructor() {
     super();
-    this.countLikes = 0;
-    this.countDislikes = 0;
-
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+    this.likeCount = this.shadowRoot.querySelector('#like');
+  }
+
+  static get observedAttributes() {
+    return ['like'];
+  }
+
+  attributeChangedCallback(property, oldValue, newValue) {
+    if (oldValue === newValue) return;
+    if (property === 'like' && this.likeCount) {
+      this.likeCount.textContent = newValue;
+    }
   }
 
   connectedCallback() {
@@ -69,25 +78,9 @@ class userComment extends HTMLElement {
     ).textContent = `Email: ${this.getAttribute('email')}  `;
     this.shadowRoot.querySelector('span').textContent =
       this.getAttribute('comment');
-    this.shadowRoot.getElementById('bntLike').onclick = () => this.incLikes();
-    this.shadowRoot.getElementById('bntDislike').onclick = () =>
-      this.incDislikes();
-    this.update('like', this.countLikes);
-    this.update('dislike', this.countDislikes);
-  }
-
-  incLikes() {
-    // eslint-disable-next-line no-plusplus
-    this.update('like', ++this.countLikes);
-  }
-
-  incDislikes() {
-    // eslint-disable-next-line no-plusplus
-    this.update('dislike', ++this.countDislikes);
-  }
-
-  update(id, count) {
-    this.shadowRoot.getElementById(id).textContent = count;
+    store.subscribe((current) => {
+      this.setAttribute('like', current.like);
+    });
   }
 }
 

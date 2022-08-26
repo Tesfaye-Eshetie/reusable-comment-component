@@ -13,6 +13,7 @@ module.exports = {
     'prettier/prettier': 'error',
     'no-unused-vars': 'warn',
     'no-console': 'off',
+    'no-plusplus': 'off',
   },
-  plugins: ['prettier'],
+  plugins: ['prettier', 'vite'],
 };
