@@ -4,9 +4,7 @@ on:
   pull_request:
   push:
     branches: 
-      - master
-      - develop
-
+      - GitHub-action-hosting
 jobs:
   test:
     name: Running Units Tests
