@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    
+    
+    <title>Tesfaye's Reusable-Comment-Component</title>
+    <script type="module" crossorigin src="/assets/index.e30ef2d2.js"></script>
+    <link rel="stylesheet" href="/assets/index.3f0ce019.css">
+  <link rel="manifest" href="/manifest.webmanifest"></head>
+  <body>
+    <header id="header">
+      <h1>Reuseble component</h1>
+    </header>
+    <section class="main">
+      <div class="main_container">
+        <form id="form" action="/">
+          <div id="form_image">
+            <img src="/assets/cute_dog.43c5115f.avif" alt="cute dog"/>
+            <h2>Please comment on picture</h2>
+          </div>
+          <div id="form_input">
+            <div class="input-flex">
+              <div class="input-control">
+                <label for="username" class="label">Username</label>
+                <input
+                  id="username"
+                  name="username"
+                  type="text"
+                  placeholder="Insert your name..."
+                />
+                <div class="error"></div>
+              </div>
+              <div class="input-control">
+                <label for="email" class="label">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="text"
+                  placeholder="example@domain.com"
+                />
+                <div class="error"></div>
+              </div>
+            </div>
+  
+            <div class="input-control">
+              <label for="comment" class="label">Comment</label>
+              <textarea
+                id="comment"
+                cols="50"
+                rows="4"
+                placeholder="Please insert your comments..."
+              ></textarea>
+              <div class="error"></div>
+            </div>
+            <div class="input-control">
+              <div class="input-check">
+                <input type="checkbox" id="input-checkbox" name="terms" />
+                <p>
+                  I have read and accept
+                  <a href="#">SOMETHING Terms and Conditions</a>
+                </p>
+                <div class="error"></div>
+              </div>
+            </div>
+            <button type="submit">Add comment</button>
+            <button type="button" id="clear_bnt">Clear comments</button>
+          </div>
+        </form>
+      </div>
+    </section>
+    <footer class="footer">
+      <h3 class="footer__text">Copyright, Tesfaye Eshetie, 2022</h3>
+    </footer>
+  </body>
+</html>
