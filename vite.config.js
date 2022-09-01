@@ -15,7 +15,7 @@ export default defineConfig({
         globPatterns: ['**/*.html'],
       },
       manifest: {
-        
+
       }
     }),
   ],

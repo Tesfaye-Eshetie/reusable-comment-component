@@ -27,27 +27,13 @@ strong {
   font-size: 1.4rem;
 }
 
-#preference button {
-  width: 6rem;
-  height: 3rem;
-  border: none;
-  border-radius: 10px;
-  background-color: seagreen;
-  color: white;
-}
-#preference #bntDislike {
-  background-color: #ddA333;
-}
 </style>
   <div>
     <h3></h3>
     <h4></h4>
     <p><strong>Comment:</strong> <span></span></p>
     <p><strong>Commented on: </strong>${new Date()}</p>
-    <div id="preference"> 
-      <span id="like"></span>
-    </div>
-  </div>`;
+    </div>`;
 
 class userComment extends HTMLElement {
   constructor() {
@@ -58,18 +44,7 @@ class userComment extends HTMLElement {
     this.likeCount = this.shadowRoot.querySelector('#like');
   }
 
-  static get observedAttributes() {
-    return ['like'];
-  }
-
-  attributeChangedCallback(property, oldValue, newValue) {
-    if (oldValue === newValue) return;
-    if (property === 'like' && this.likeCount) {
-      this.likeCount.textContent = newValue;
-    }
-  }
-
-  connectedCallback() {
+   connectedCallback() {
     this.shadowRoot.querySelector(
       'h3'
     ).textContent = `Name: ${this.getAttribute('name')} `;
@@ -78,9 +53,6 @@ class userComment extends HTMLElement {
     ).textContent = `Email: ${this.getAttribute('email')}  `;
     this.shadowRoot.querySelector('span').textContent =
       this.getAttribute('comment');
-    store.subscribe((current) => {
-      this.setAttribute('like', current.like);
-    });
   }
 }
 

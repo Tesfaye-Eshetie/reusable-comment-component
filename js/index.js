@@ -1,11 +1,10 @@
+import { registerSW } from 'virtual:pwa-register';
 import userComment from './component/userComment';
 import {
   postComments,
   getComments,
-  // clearComments,
   deleteMyDB,
 } from './idb/indexedDB';
-import { registerSW } from 'virtual:pwa-register';
 
 const updateSw = registerSW({
   onNeedRefresh() {
@@ -24,7 +23,6 @@ const updateSw = registerSW({
   },
 });
 
-// import { store } from './idb/store';
 
 window.customElements.define('user-comment', userComment);
 
@@ -114,7 +112,6 @@ form.addEventListener('submit', (e) => {
 });
 
 clearButton.addEventListener('click', () => {
-  // clearComments();
   deleteMyDB();
   window.location.reload();
 });
