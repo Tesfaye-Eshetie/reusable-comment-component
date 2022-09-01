@@ -7,7 +7,6 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "prettier",
     "lint": "eslint --fix  ./js"
   },
   "keywords": [],
