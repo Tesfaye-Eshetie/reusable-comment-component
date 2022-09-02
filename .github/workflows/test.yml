@@ -6,7 +6,7 @@ on:
     branches: 
       - GitHub-action-hosting
 jobs:
-  test:
+   test-and-build:
     name: Running Units Tests
     runs-on: ubuntu-latest
 
@@ -17,4 +17,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install
-      run: npm install
+      - run: npm ci # Install our node modules
+      - run: npm test # Run our test script
+      - run: npm run build # Run our build script
