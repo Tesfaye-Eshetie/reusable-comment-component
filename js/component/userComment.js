@@ -44,7 +44,7 @@ class userComment extends HTMLElement {
     this.likeCount = this.shadowRoot.querySelector('#like');
   }
 
-   connectedCallback() {
+  connectedCallback() {
     this.shadowRoot.querySelector(
       'h3'
     ).textContent = `Name: ${this.getAttribute('name')} `;

@@ -14,9 +14,7 @@ export default defineConfig({
       injectManifest: {
         globPatterns: ['**/*.html'],
       },
-      manifest: {
-
-      }
+      manifest: {},
     }),
   ],
 });

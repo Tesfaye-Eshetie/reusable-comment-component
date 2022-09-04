@@ -67,7 +67,7 @@ body {
   background-color: var(--clr-light);
   color: var(--clr-dark);
   width: 80%;
-  padding: .2rem 1.5rem;
+  padding: 0.2rem 1.5rem;
   border-top: var(--clr-dark) solid 3px;
   margin: 1rem auto;
 }
@@ -84,7 +84,7 @@ body {
   margin: 1rem;
   text-align: center;
 }
-#form_image img{
+#form_image img {
   width: 26rem;
   border-radius: 1rem;
 }
@@ -115,7 +115,7 @@ body {
 }
 #form #clear_bnt {
   background-color: #dd3333;
-  border-color:#dd3333
+  border-color: #dd3333;
 }
 #form button:hover,
 #form #clear_bnt:hover {
@@ -210,4 +210,4 @@ input[type='checkbox' i] {
   .main_container user-comment {
     width: 100%;
   }
-  }
+}

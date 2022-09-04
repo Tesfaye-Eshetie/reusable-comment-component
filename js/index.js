@@ -1,10 +1,6 @@
 import { registerSW } from 'virtual:pwa-register';
 import userComment from './component/userComment';
-import {
-  postComments,
-  getComments,
-  deleteMyDB,
-} from './idb/indexedDB';
+import { postComments, getComments, deleteMyDB } from './idb/indexedDB';
 
 const updateSw = registerSW({
   onNeedRefresh() {
@@ -22,7 +18,6 @@ const updateSw = registerSW({
     console.error(e);
   },
 });
-
 
 window.customElements.define('user-comment', userComment);
 
