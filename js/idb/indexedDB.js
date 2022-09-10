@@ -1,5 +1,11 @@
 import { openDB, deleteDB } from 'idb';
-import database from './database';
+
+export const database = openDB('myDB', 1, {
+  upgrade(db) {
+    db.createObjectStore('comments');
+    db.createObjectStore('performance');
+  },
+});
 
 export async function postComments(comment, key) {
   return (await database).put('comments', comment, key);
@@ -18,7 +24,6 @@ export async function getComments(con) {
         con.append(user);
       }
     }
-    console.log(res);
   });
 }
 

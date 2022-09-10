@@ -1,5 +1,3 @@
-import { store } from '../idb/store';
-
 const template = document.createElement('template');
 template.innerHTML = `
 <style>

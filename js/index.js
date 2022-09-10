@@ -102,7 +102,6 @@ form.addEventListener('submit', (e) => {
   } else {
     const commentData = { usernameValue, emailValue, commentValue, data };
     postComments(commentData, emailValue);
-
     window.location.reload();
   }
 });
