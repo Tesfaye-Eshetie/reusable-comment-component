@@ -13,6 +13,7 @@ export async function getComments(con) {
         user.setAttribute('name', res[i].usernameValue);
         user.setAttribute('email', res[i].emailValue);
         user.setAttribute('comment', res[i].commentValue);
+        user.setAttribute('data', res[i].data);
 
         con.append(user);
       }

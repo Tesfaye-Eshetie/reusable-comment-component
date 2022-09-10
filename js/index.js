@@ -90,6 +90,7 @@ form.addEventListener('submit', (e) => {
   const usernameValue = username.value.trim();
   const emailValue = email.value.trim();
   const commentValue = comment.value.trim();
+  const data = new Date().toString().slice(0, 15);
   if (
     !usernameValue ||
     !emailValue ||
@@ -99,7 +100,7 @@ form.addEventListener('submit', (e) => {
   ) {
     validateInputs(usernameValue, emailValue, commentValue);
   } else {
-    const commentData = { usernameValue, emailValue, commentValue };
+    const commentData = { usernameValue, emailValue, commentValue, data };
     postComments(commentData, emailValue);
 
     window.location.reload();

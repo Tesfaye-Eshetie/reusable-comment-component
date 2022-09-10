@@ -31,8 +31,8 @@ strong {
   <div>
     <h3></h3>
     <h4></h4>
-    <p><strong>Comment:</strong> <span></span></p>
-    <p><strong>Commented on: </strong>${new Date()}</p>
+    <p><strong>Comment:</strong> <span id='comment'></span></p>
+    <p><strong>Commented on: </strong><span id='data'></span></p>
     </div>`;
 
 class userComment extends HTMLElement {
@@ -51,8 +51,10 @@ class userComment extends HTMLElement {
     this.shadowRoot.querySelector(
       'h4'
     ).textContent = `Email: ${this.getAttribute('email')}  `;
-    this.shadowRoot.querySelector('span').textContent =
+    this.shadowRoot.querySelector('#comment').textContent =
       this.getAttribute('comment');
+    this.shadowRoot.querySelector('#data').textContent =
+      this.getAttribute('data');
   }
 }
 
