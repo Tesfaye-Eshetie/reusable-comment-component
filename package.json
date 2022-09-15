@@ -7,18 +7,27 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "test": "prettier -c .",
+    "fix": "prettier --write .",
     "lint": "eslint --fix  ./js"
   },
   "keywords": [],
   "author": "Tesfaye",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.20.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
-    "vite": "^3.0.2"
+    "vite": "^3.0.9"
+  },
+  "dependencies": {
+    "idb": "^7.0.2",
+    "vite-plugin-pwa": "^0.12.3",
+    "workbox-precaching": "^6.5.4",
+    "workbox-recipes": "^6.5.4",
+    "workbox-routing": "^6.5.4",
+    "workbox-strategies": "^6.5.4"
   }
 }

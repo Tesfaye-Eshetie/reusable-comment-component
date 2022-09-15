@@ -1,9 +1,9 @@
 :root {
   --clr-primary: #e8e0eb;
   --clr-secondery: #aee0ec;
-  --clr-tertiary: #c0ebeb;
+  --clr-tertiary: #444444;
   --clr-dark: #17173b;
-  --clr-light: #f5f5f5;
+  --clr-light: #eeeeee;
   --fw-normal: 400;
   --fw-bold: 700;
   --fw-black: 900;
@@ -39,42 +39,72 @@ body {
   font-size: 2.5rem;
   font-weight: var(--fw-black);
   letter-spacing: 0.2rem;
-  text-shadow: 2px 2px var(--clr-secondery);
+  text-shadow: 2px 2px #d8781e;
   text-align: center;
   padding: 1rem 0.5rem;
 }
 
-.main-container {
+.main {
   display: grid;
-  align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
-  gap: 1rem;
   width: 100vw;
   min-height: calc(100vh - 14rem);
-  padding: 2rem 4rem;
 }
-.main-container user-comment {
-  background-image: linear-gradient( var(--clr-tertiary), var(--clr-primary) );
-  width: 26rem;
-  min-height: 22rem;
-  border-radius: .6rem;
+.main_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--clr-light);
+  color: var(--clr-dark);
+  width: 80%;
   padding: 1.5rem;
+  margin: 0 auto;
+}
+.main_container user-comment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--clr-light);
+  color: var(--clr-dark);
+  width: 80%;
+  padding: 0.2rem 1.5rem;
+  border-top: var(--clr-dark) solid 3px;
+  margin: 1rem auto;
 }
 #form {
   display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: whitesmoke;
-  width: 26rem;
-  min-height: 22rem;
-  border-radius: 1rem;
+  background-color: var(--clr-light);
+  width: 80%;
+  min-height: 20rem;
   padding: 1.5rem;
 }
+#form_image {
+  margin: 1rem;
+  text-align: center;
+}
+#form_image img {
+  width: 26rem;
+  border-radius: 1rem;
+}
+#form_image h2 {
+  font-size: 1.6rem;
+  font-weight: var(--fw-black);
+  letter-spacing: 0.1rem;
+  text-shadow: 1px 1px #d8781e;
+  text-align: center;
+  padding: 0.5rem;
+}
+#form p {
+  font-size: 0.8rem;
+  color: #080707;
+}
 #form button {
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  padding: .8em 1.6em;
+  padding: 0.8em 1.6em;
+  margin-top: 1rem;
   text-align: center;
   text-transform: uppercase;
   background-color: #3498db;
@@ -83,7 +113,12 @@ body {
   border-color: #3498db;
   color: #fff;
 }
-#form button:hover {
+#form #clear_bnt {
+  background-color: #dd3333;
+  border-color: #dd3333;
+}
+#form button:hover,
+#form #clear_bnt:hover {
   background-color: var(--clr-light);
   color: var(--clr-dark);
 }
@@ -91,7 +126,13 @@ body {
 .input-control {
   display: flex;
   flex-direction: column;
-  margin-bottom: .6rem;
+  margin-bottom: 0.2rem;
+}
+.input-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24rem;
 }
 .input-control input,
 .input-control textarea {
@@ -123,14 +164,32 @@ body {
 }
 
 .input-control #username,
-.input-control #email,
+.input-control #email {
+  width: 24rem;
+}
 .input-control #comment {
-  width: 20rem;
+  width: 24rem;
 }
 .input-control .label {
   font-weight: 700;
 }
-
+.input-check {
+  display: flex;
+  position: relative;
+  width: 24rem;
+}
+.input-check .error {
+  color: #ff3860;
+  font-size: 9px;
+  height: 13px;
+  position: absolute;
+  left: 0.5rem;
+  bottom: -1rem;
+}
+input[type='checkbox' i] {
+  width: 2rem;
+  margin-right: 0.5rem;
+}
 .footer {
   background-color: var(--clr-dark);
   color: var(--clr-light);
@@ -141,4 +200,14 @@ body {
   text-align: center;
   font-weight: var(--fw-bold);
   padding: 3rem;
+}
+
+@media (max-width: 60rem) {
+  #form {
+    flex-direction: column;
+  }
+  #form,
+  .main_container user-comment {
+    width: 100%;
+  }
 }

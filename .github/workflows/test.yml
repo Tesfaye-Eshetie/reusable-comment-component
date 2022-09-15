@@ -1,0 +1,22 @@
+name: Github Actions
+
+on:
+  pull_request:
+  push:
+    branches: 
+      - GitHub-action-hosting
+jobs:
+   test-and-build:
+    name: Running Units Tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install
+      install: npm ci # Install our node modules
+      test: npm run test # Run our test script
+      build: npm run build # Run our build script
