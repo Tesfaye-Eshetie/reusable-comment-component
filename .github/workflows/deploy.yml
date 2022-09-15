@@ -4,6 +4,7 @@ name: Deploy
 on:
   push:
     branches:
+      - main
       - GitHub-action-hosting
 # If we can write to it
 permissions:
