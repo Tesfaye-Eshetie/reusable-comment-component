@@ -5,6 +5,10 @@ on:
   push:
     branches:
       - main
+<<<<<<< HEAD
+=======
+      - GitHub-action-hosting
+>>>>>>> 0735ed2 (updated test.yml file)
 # If we can write to it
 permissions:
   contents: write
