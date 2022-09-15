@@ -1,4 +1,4 @@
-import {database} from './indexedDB';
+import { database } from './indexedDB';
 
 export class StoreSetup {
   constructor(init = {}) {
