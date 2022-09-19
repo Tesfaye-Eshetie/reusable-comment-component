@@ -3,29 +3,29 @@
   if (t && t.supports && t.supports('modulepreload')) return;
   for (const o of document.querySelectorAll('link[rel="modulepreload"]')) r(o);
   new MutationObserver((o) => {
-    for (const a of o)
-      if (a.type === 'childList')
-        for (const s of a.addedNodes)
+    for (const u of o)
+      if (u.type === 'childList')
+        for (const s of u.addedNodes)
           s.tagName === 'LINK' && s.rel === 'modulepreload' && r(s);
   }).observe(document, { childList: !0, subtree: !0 });
   function n(o) {
-    const a = {};
+    const u = {};
     return (
-      o.integrity && (a.integrity = o.integrity),
-      o.referrerpolicy && (a.referrerPolicy = o.referrerpolicy),
+      o.integrity && (u.integrity = o.integrity),
+      o.referrerpolicy && (u.referrerPolicy = o.referrerpolicy),
       o.crossorigin === 'use-credentials'
-        ? (a.credentials = 'include')
+        ? (u.credentials = 'include')
         : o.crossorigin === 'anonymous'
-        ? (a.credentials = 'omit')
-        : (a.credentials = 'same-origin'),
-      a
+        ? (u.credentials = 'omit')
+        : (u.credentials = 'same-origin'),
+      u
     );
   }
   function r(o) {
     if (o.ep) return;
     o.ep = !0;
-    const a = n(o);
-    fetch(o.href, a);
+    const u = n(o);
+    fetch(o.href, u);
   }
 })();
 try {
@@ -49,7 +49,7 @@ function K(e, t) {
       Object.defineProperty(e, r.key, r);
   }
 }
-function q(e, t) {
+function x(e, t) {
   (t == null || t > e.length) && (t = e.length);
   for (var n = 0, r = new Array(t); n < t; n++) r[n] = e[n];
   return r;
@@ -59,9 +59,9 @@ function H(e, t) {
   if (typeof Symbol > 'u' || e[Symbol.iterator] == null) {
     if (
       Array.isArray(e) ||
-      (n = (function (o, a) {
+      (n = (function (o, u) {
         if (o) {
-          if (typeof o == 'string') return q(o, a);
+          if (typeof o == 'string') return x(o, u);
           var s = Object.prototype.toString.call(o).slice(8, -1);
           return (
             s === 'Object' && o.constructor && (s = o.constructor.name),
@@ -69,7 +69,7 @@ function H(e, t) {
               ? Array.from(o)
               : s === 'Arguments' ||
                 /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(s)
-              ? q(o, a)
+              ? x(o, u)
               : void 0
           );
         }
@@ -90,17 +90,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 try {
   self['workbox:core:6.5.3'] && _();
 } catch {}
-var k = function () {
+var P = function () {
   var e = this;
   this.promise = new Promise(function (t, n) {
     (e.resolve = t), (e.reject = n);
   });
 };
-function P(e, t) {
+function I(e, t) {
   var n = location.href;
   return new URL(e, n).href === new URL(t, n).href;
 }
-var v = function (e, t) {
+var g = function (e, t) {
   (this.type = e), Object.assign(this, t);
 };
 function y(e, t, n) {
@@ -112,27 +112,27 @@ function y(e, t, n) {
 }
 function Z() {}
 var G = { type: 'SKIP_WAITING' };
-function O(e, t) {
+function q(e, t) {
   if (!t) return e && e.then ? e.then(Z) : Promise.resolve();
 }
-var Y = (function (e) {
+var J = (function (e) {
   var t, n;
-  function r(f, u) {
-    var i, c;
+  function r(f, c) {
+    var i, a;
     return (
-      u === void 0 && (u = {}),
+      c === void 0 && (c = {}),
       ((i = e.call(this) || this).nn = {}),
       (i.tn = 0),
-      (i.rn = new k()),
-      (i.en = new k()),
-      (i.on = new k()),
+      (i.rn = new P()),
+      (i.en = new P()),
+      (i.on = new P()),
       (i.un = 0),
       (i.an = new Set()),
       (i.cn = function () {
         var d = i.fn,
           l = d.installing;
         i.tn > 0 ||
-        !P(l.scriptURL, i.sn.toString()) ||
+        !I(l.scriptURL, i.sn.toString()) ||
         performance.now() > i.un + 6e4
           ? ((i.vn = l), d.removeEventListener('updatefound', i.cn))
           : ((i.hn = l), i.an.add(l), i.rn.resolve(l)),
@@ -146,12 +146,12 @@ var Y = (function (e) {
           L = m === i.vn,
           D = { sw: m, isExternal: L, originalEvent: d };
         !L && i.mn && (D.isUpdate = !0),
-          i.dispatchEvent(new v(p, D)),
+          i.dispatchEvent(new g(p, D)),
           p === 'installed'
             ? (i.wn = self.setTimeout(function () {
                 p === 'installed' &&
                   l.waiting === m &&
-                  i.dispatchEvent(new v('waiting', D));
+                  i.dispatchEvent(new g('waiting', D));
               }, 200))
             : p === 'activating' && (clearTimeout(i.wn), L || i.en.resolve(m));
       }),
@@ -159,7 +159,7 @@ var Y = (function (e) {
         var l = i.hn,
           m = l !== navigator.serviceWorker.controller;
         i.dispatchEvent(
-          new v('controlling', {
+          new g('controlling', {
             isExternal: m,
             originalEvent: d,
             sw: l,
@@ -169,14 +169,14 @@ var Y = (function (e) {
           m || i.on.resolve(l);
       }),
       (i.gn =
-        ((c = function (d) {
+        ((a = function (d) {
           var l = d.data,
             m = d.ports,
             p = d.source;
           return y(i.getSW(), function () {
             i.an.has(p) &&
               i.dispatchEvent(
-                new v('message', { data: l, originalEvent: d, ports: m, sw: p })
+                new g('message', { data: l, originalEvent: d, ports: m, sw: p })
               );
           });
         }),
@@ -184,13 +184,13 @@ var Y = (function (e) {
           for (var d = [], l = 0; l < arguments.length; l++)
             d[l] = arguments[l];
           try {
-            return Promise.resolve(c.apply(this, d));
+            return Promise.resolve(a.apply(this, d));
           } catch (m) {
             return Promise.reject(m);
           }
         })),
       (i.sn = f),
-      (i.nn = u),
+      (i.nn = c),
       navigator.serviceWorker.addEventListener('message', i.gn),
       i
     );
@@ -200,21 +200,21 @@ var Y = (function (e) {
     (t.prototype.constructor = t),
     (t.__proto__ = n);
   var o,
-    a,
+    u,
     s = r.prototype;
   return (
     (s.register = function (f) {
-      var u = (f === void 0 ? {} : f).immediate,
-        i = u !== void 0 && u;
+      var c = (f === void 0 ? {} : f).immediate,
+        i = c !== void 0 && c;
       try {
-        var c = this;
+        var a = this;
         return (function (d, l) {
           var m = d();
           return m && m.then ? m.then(l) : l(m);
         })(
           function () {
             if (!i && document.readyState !== 'complete')
-              return O(
+              return q(
                 new Promise(function (d) {
                   return window.addEventListener('load', d);
                 })
@@ -222,37 +222,37 @@ var Y = (function (e) {
           },
           function () {
             return (
-              (c.mn = Boolean(navigator.serviceWorker.controller)),
-              (c.yn = c.pn()),
-              y(c.bn(), function (d) {
-                (c.fn = d),
-                  c.yn &&
-                    ((c.hn = c.yn),
-                    c.en.resolve(c.yn),
-                    c.on.resolve(c.yn),
-                    c.yn.addEventListener('statechange', c.ln, { once: !0 }));
-                var l = c.fn.waiting;
+              (a.mn = Boolean(navigator.serviceWorker.controller)),
+              (a.yn = a.pn()),
+              y(a.bn(), function (d) {
+                (a.fn = d),
+                  a.yn &&
+                    ((a.hn = a.yn),
+                    a.en.resolve(a.yn),
+                    a.on.resolve(a.yn),
+                    a.yn.addEventListener('statechange', a.ln, { once: !0 }));
+                var l = a.fn.waiting;
                 return (
                   l &&
-                    P(l.scriptURL, c.sn.toString()) &&
-                    ((c.hn = l),
+                    I(l.scriptURL, a.sn.toString()) &&
+                    ((a.hn = l),
                     Promise.resolve()
                       .then(function () {
-                        c.dispatchEvent(
-                          new v('waiting', {
+                        a.dispatchEvent(
+                          new g('waiting', {
                             sw: l,
                             wasWaitingBeforeRegister: !0,
                           })
                         );
                       })
                       .then(function () {})),
-                  c.hn && (c.rn.resolve(c.hn), c.an.add(c.hn)),
-                  c.fn.addEventListener('updatefound', c.cn),
+                  a.hn && (a.rn.resolve(a.hn), a.an.add(a.hn)),
+                  a.fn.addEventListener('updatefound', a.cn),
                   navigator.serviceWorker.addEventListener(
                     'controllerchange',
-                    c.dn
+                    a.dn
                   ),
-                  c.fn
+                  a.fn
                 );
               })
             );
@@ -264,7 +264,7 @@ var Y = (function (e) {
     }),
     (s.update = function () {
       try {
-        return this.fn ? O(this.fn.update()) : void 0;
+        return this.fn ? q(this.fn.update()) : void 0;
       } catch (f) {
         return Promise.reject(f);
       }
@@ -274,11 +274,11 @@ var Y = (function (e) {
     }),
     (s.messageSW = function (f) {
       try {
-        return y(this.getSW(), function (u) {
-          return W(u, f);
+        return y(this.getSW(), function (c) {
+          return W(c, f);
         });
-      } catch (u) {
-        return Promise.reject(u);
+      } catch (c) {
+        return Promise.reject(c);
       }
     }),
     (s.messageSkipWaiting = function () {
@@ -286,37 +286,37 @@ var Y = (function (e) {
     }),
     (s.pn = function () {
       var f = navigator.serviceWorker.controller;
-      return f && P(f.scriptURL, this.sn.toString()) ? f : void 0;
+      return f && I(f.scriptURL, this.sn.toString()) ? f : void 0;
     }),
     (s.bn = function () {
       try {
         var f = this;
-        return (function (u, i) {
+        return (function (c, i) {
           try {
-            var c = u();
+            var a = c();
           } catch (d) {
             return i(d);
           }
-          return c && c.then ? c.then(void 0, i) : c;
+          return a && a.then ? a.then(void 0, i) : a;
         })(
           function () {
             return y(
               navigator.serviceWorker.register(f.sn, f.nn),
-              function (u) {
-                return (f.un = performance.now()), u;
+              function (c) {
+                return (f.un = performance.now()), c;
               }
             );
           },
-          function (u) {
-            throw u;
+          function (c) {
+            throw c;
           }
         );
-      } catch (u) {
-        return Promise.reject(u);
+      } catch (c) {
+        return Promise.reject(c);
       }
     }),
     (o = r),
-    (a = [
+    (u = [
       {
         key: 'active',
         get: function () {
@@ -329,7 +329,7 @@ var Y = (function (e) {
           return this.on.promise;
         },
       },
-    ]) && K(o.prototype, a),
+    ]) && K(o.prototype, u),
     r
   );
 })(
@@ -356,251 +356,38 @@ var Y = (function (e) {
     );
   })()
 );
-function J(e = {}) {
+function Q(e = {}) {
   const {
     immediate: t = !1,
     onNeedRefresh: n,
     onOfflineReady: r,
     onRegistered: o,
-    onRegisterError: a,
+    onRegisterError: u,
   } = e;
   let s;
-  const f = async (u = !0) => {};
+  const f = async (c = !0) => {};
   return (
     'serviceWorker' in navigator &&
-      ((s = new Y('/reusable-comment-component/./sw.js', {
+      ((s = new J('/reusable-comment-component/./sw.js', {
         scope: '/reusable-comment-component/',
         type: 'classic',
       })),
-      s.addEventListener('activated', (u) => {
-        u.isUpdate ? window.location.reload() : r == null || r();
+      s.addEventListener('activated', (c) => {
+        c.isUpdate ? window.location.reload() : r == null || r();
       }),
       s
         .register({ immediate: t })
-        .then((u) => {
-          o == null || o(u);
+        .then((c) => {
+          o == null || o(c);
         })
-        .catch((u) => {
-          a == null || a(u);
+        .catch((c) => {
+          u == null || u(c);
         })),
     f
   );
 }
-const Q = (e, t) => t.some((n) => e instanceof n);
-let T, N;
-function X() {
-  return (
-    T ||
-    (T = [IDBDatabase, IDBObjectStore, IDBIndex, IDBCursor, IDBTransaction])
-  );
-}
-function ee() {
-  return (
-    N ||
-    (N = [
-      IDBCursor.prototype.advance,
-      IDBCursor.prototype.continue,
-      IDBCursor.prototype.continuePrimaryKey,
-    ])
-  );
-}
-const V = new WeakMap(),
-  R = new WeakMap(),
-  $ = new WeakMap(),
-  I = new WeakMap(),
-  j = new WeakMap();
-function te(e) {
-  const t = new Promise((n, r) => {
-    const o = () => {
-        e.removeEventListener('success', a), e.removeEventListener('error', s);
-      },
-      a = () => {
-        n(h(e.result)), o();
-      },
-      s = () => {
-        r(e.error), o();
-      };
-    e.addEventListener('success', a), e.addEventListener('error', s);
-  });
-  return (
-    t
-      .then((n) => {
-        n instanceof IDBCursor && V.set(n, e);
-      })
-      .catch(() => {}),
-    j.set(t, e),
-    t
-  );
-}
-function ne(e) {
-  if (R.has(e)) return;
-  const t = new Promise((n, r) => {
-    const o = () => {
-        e.removeEventListener('complete', a),
-          e.removeEventListener('error', s),
-          e.removeEventListener('abort', s);
-      },
-      a = () => {
-        n(), o();
-      },
-      s = () => {
-        r(e.error || new DOMException('AbortError', 'AbortError')), o();
-      };
-    e.addEventListener('complete', a),
-      e.addEventListener('error', s),
-      e.addEventListener('abort', s);
-  });
-  R.set(e, t);
-}
-let A = {
-  get(e, t, n) {
-    if (e instanceof IDBTransaction) {
-      if (t === 'done') return R.get(e);
-      if (t === 'objectStoreNames') return e.objectStoreNames || $.get(e);
-      if (t === 'store')
-        return n.objectStoreNames[1]
-          ? void 0
-          : n.objectStore(n.objectStoreNames[0]);
-    }
-    return h(e[t]);
-  },
-  set(e, t, n) {
-    return (e[t] = n), !0;
-  },
-  has(e, t) {
-    return e instanceof IDBTransaction && (t === 'done' || t === 'store')
-      ? !0
-      : t in e;
-  },
-};
-function re(e) {
-  A = e(A);
-}
-function oe(e) {
-  return e === IDBDatabase.prototype.transaction &&
-    !('objectStoreNames' in IDBTransaction.prototype)
-    ? function (t, ...n) {
-        const r = e.call(B(this), t, ...n);
-        return $.set(r, t.sort ? t.sort() : [t]), h(r);
-      }
-    : ee().includes(e)
-    ? function (...t) {
-        return e.apply(B(this), t), h(V.get(this));
-      }
-    : function (...t) {
-        return h(e.apply(B(this), t));
-      };
-}
-function ie(e) {
-  return typeof e == 'function'
-    ? oe(e)
-    : (e instanceof IDBTransaction && ne(e), Q(e, X()) ? new Proxy(e, A) : e);
-}
-function h(e) {
-  if (e instanceof IDBRequest) return te(e);
-  if (I.has(e)) return I.get(e);
-  const t = ie(e);
-  return t !== e && (I.set(e, t), j.set(t, e)), t;
-}
-const B = (e) => j.get(e);
-function se(e, t, { blocked: n, upgrade: r, blocking: o, terminated: a } = {}) {
-  const s = indexedDB.open(e, t),
-    f = h(s);
-  return (
-    r &&
-      s.addEventListener('upgradeneeded', (u) => {
-        r(h(s.result), u.oldVersion, u.newVersion, h(s.transaction));
-      }),
-    n && s.addEventListener('blocked', () => n()),
-    f
-      .then((u) => {
-        a && u.addEventListener('close', () => a()),
-          o && u.addEventListener('versionchange', () => o());
-      })
-      .catch(() => {}),
-    f
-  );
-}
-function ae(e, { blocked: t } = {}) {
-  const n = indexedDB.deleteDatabase(e);
-  return t && n.addEventListener('blocked', () => t()), h(n).then(() => {});
-}
-const ce = ['get', 'getKey', 'getAll', 'getAllKeys', 'count'],
-  ue = ['put', 'add', 'delete', 'clear'],
-  C = new Map();
-function U(e, t) {
-  if (!(e instanceof IDBDatabase && !(t in e) && typeof t == 'string')) return;
-  if (C.get(t)) return C.get(t);
-  const n = t.replace(/FromIndex$/, ''),
-    r = t !== n,
-    o = ue.includes(n);
-  if (
-    !(n in (r ? IDBIndex : IDBObjectStore).prototype) ||
-    !(o || ce.includes(n))
-  )
-    return;
-  const a = async function (s, ...f) {
-    const u = this.transaction(s, o ? 'readwrite' : 'readonly');
-    let i = u.store;
-    return (
-      r && (i = i.index(f.shift())),
-      (await Promise.all([i[n](...f), o && u.done]))[0]
-    );
-  };
-  return C.set(t, a), a;
-}
-re((e) => ({
-  ...e,
-  get: (t, n, r) => U(t, n) || e.get(t, n, r),
-  has: (t, n) => !!U(t, n) || e.has(t, n),
-}));
-const x = se('myDB', 1, {
-  upgrade(e) {
-    e.createObjectStore('comments'), e.createObjectStore('performance');
-  },
-});
-class le {
-  constructor(t = {}) {
-    const n = this;
-    (this.subscribers = []),
-      x.then(async (r) => {
-        this.db = r;
-        const o = await r.get('performance', 'like');
-        o && this.set('like', o);
-      }),
-      (this.state = new Proxy(t, {
-        async set(r, o, a) {
-          return (
-            (r[o] = a),
-            o !== 'like' && (r.like = (r.like || 0) + 1),
-            n.db &&
-              (await n.db.put('performance', a, o),
-              o !== 'like' &&
-                (await n.db.put('performance', r.performance, 'like'))),
-            n.subscribers.forEach((s) => s(r)),
-            !0
-          );
-        },
-      }));
-  }
-  subscribe(t) {
-    if (typeof t != 'function')
-      throw new Error('You must subscribe with a function');
-    this.subscribers.push(t), t(this.state);
-  }
-  set(t, n) {
-    this.state[t] = n;
-  }
-  get(t) {
-    return this.state[t];
-  }
-  increment() {
-    this.set('like', (this.get('like') || 0) + 1);
-  }
-}
-new le({ performance: 0 });
-const z = document.createElement('template');
-z.innerHTML = `
+const U = document.createElement('template');
+U.innerHTML = `
 <style>
 h3, h4 {
   font-weight: bold;
@@ -633,11 +420,11 @@ strong {
     <p><strong>Comment:</strong> <span id='comment'></span></p>
     <p><strong>Commented on: </strong><span id='data'></span></p>
     </div>`;
-class de extends HTMLElement {
+class X extends HTMLElement {
   constructor() {
     super(),
       this.attachShadow({ mode: 'open' }),
-      this.shadowRoot.appendChild(z.content.cloneNode(!0)),
+      this.shadowRoot.appendChild(U.content.cloneNode(!0)),
       (this.likeCount = this.shadowRoot.querySelector('#like'));
   }
   connectedCallback() {
@@ -653,11 +440,184 @@ class de extends HTMLElement {
         this.getAttribute('data'));
   }
 }
-async function fe(e, t) {
-  return (await x).put('comments', e, t);
+const Y = (e, t) => t.some((n) => e instanceof n);
+let O, T;
+function ee() {
+  return (
+    O ||
+    (O = [IDBDatabase, IDBObjectStore, IDBIndex, IDBCursor, IDBTransaction])
+  );
 }
-async function me(e) {
-  return (await x).getAll('comments').then((t) => {
+function te() {
+  return (
+    T ||
+    (T = [
+      IDBCursor.prototype.advance,
+      IDBCursor.prototype.continue,
+      IDBCursor.prototype.continuePrimaryKey,
+    ])
+  );
+}
+const V = new WeakMap(),
+  R = new WeakMap(),
+  $ = new WeakMap(),
+  k = new WeakMap(),
+  j = new WeakMap();
+function ne(e) {
+  const t = new Promise((n, r) => {
+    const o = () => {
+        e.removeEventListener('success', u), e.removeEventListener('error', s);
+      },
+      u = () => {
+        n(h(e.result)), o();
+      },
+      s = () => {
+        r(e.error), o();
+      };
+    e.addEventListener('success', u), e.addEventListener('error', s);
+  });
+  return (
+    t
+      .then((n) => {
+        n instanceof IDBCursor && V.set(n, e);
+      })
+      .catch(() => {}),
+    j.set(t, e),
+    t
+  );
+}
+function re(e) {
+  if (R.has(e)) return;
+  const t = new Promise((n, r) => {
+    const o = () => {
+        e.removeEventListener('complete', u),
+          e.removeEventListener('error', s),
+          e.removeEventListener('abort', s);
+      },
+      u = () => {
+        n(), o();
+      },
+      s = () => {
+        r(e.error || new DOMException('AbortError', 'AbortError')), o();
+      };
+    e.addEventListener('complete', u),
+      e.addEventListener('error', s),
+      e.addEventListener('abort', s);
+  });
+  R.set(e, t);
+}
+let A = {
+  get(e, t, n) {
+    if (e instanceof IDBTransaction) {
+      if (t === 'done') return R.get(e);
+      if (t === 'objectStoreNames') return e.objectStoreNames || $.get(e);
+      if (t === 'store')
+        return n.objectStoreNames[1]
+          ? void 0
+          : n.objectStore(n.objectStoreNames[0]);
+    }
+    return h(e[t]);
+  },
+  set(e, t, n) {
+    return (e[t] = n), !0;
+  },
+  has(e, t) {
+    return e instanceof IDBTransaction && (t === 'done' || t === 'store')
+      ? !0
+      : t in e;
+  },
+};
+function oe(e) {
+  A = e(A);
+}
+function ie(e) {
+  return e === IDBDatabase.prototype.transaction &&
+    !('objectStoreNames' in IDBTransaction.prototype)
+    ? function (t, ...n) {
+        const r = e.call(B(this), t, ...n);
+        return $.set(r, t.sort ? t.sort() : [t]), h(r);
+      }
+    : te().includes(e)
+    ? function (...t) {
+        return e.apply(B(this), t), h(V.get(this));
+      }
+    : function (...t) {
+        return h(e.apply(B(this), t));
+      };
+}
+function se(e) {
+  return typeof e == 'function'
+    ? ie(e)
+    : (e instanceof IDBTransaction && re(e), Y(e, ee()) ? new Proxy(e, A) : e);
+}
+function h(e) {
+  if (e instanceof IDBRequest) return ne(e);
+  if (k.has(e)) return k.get(e);
+  const t = se(e);
+  return t !== e && (k.set(e, t), j.set(t, e)), t;
+}
+const B = (e) => j.get(e);
+function ae(e, t, { blocked: n, upgrade: r, blocking: o, terminated: u } = {}) {
+  const s = indexedDB.open(e, t),
+    f = h(s);
+  return (
+    r &&
+      s.addEventListener('upgradeneeded', (c) => {
+        r(h(s.result), c.oldVersion, c.newVersion, h(s.transaction));
+      }),
+    n && s.addEventListener('blocked', () => n()),
+    f
+      .then((c) => {
+        u && c.addEventListener('close', () => u()),
+          o && c.addEventListener('versionchange', () => o());
+      })
+      .catch(() => {}),
+    f
+  );
+}
+function ce(e, { blocked: t } = {}) {
+  const n = indexedDB.deleteDatabase(e);
+  return t && n.addEventListener('blocked', () => t()), h(n).then(() => {});
+}
+const ue = ['get', 'getKey', 'getAll', 'getAllKeys', 'count'],
+  le = ['put', 'add', 'delete', 'clear'],
+  C = new Map();
+function N(e, t) {
+  if (!(e instanceof IDBDatabase && !(t in e) && typeof t == 'string')) return;
+  if (C.get(t)) return C.get(t);
+  const n = t.replace(/FromIndex$/, ''),
+    r = t !== n,
+    o = le.includes(n);
+  if (
+    !(n in (r ? IDBIndex : IDBObjectStore).prototype) ||
+    !(o || ue.includes(n))
+  )
+    return;
+  const u = async function (s, ...f) {
+    const c = this.transaction(s, o ? 'readwrite' : 'readonly');
+    let i = c.store;
+    return (
+      r && (i = i.index(f.shift())),
+      (await Promise.all([i[n](...f), o && c.done]))[0]
+    );
+  };
+  return C.set(t, u), u;
+}
+oe((e) => ({
+  ...e,
+  get: (t, n, r) => N(t, n) || e.get(t, n, r),
+  has: (t, n) => !!N(t, n) || e.has(t, n),
+}));
+const z = ae('myDB', 1, {
+  upgrade(e) {
+    e.createObjectStore('comments'), e.createObjectStore('performance');
+  },
+});
+async function de(e, t) {
+  return (await z).put('comments', e, t);
+}
+async function fe(e) {
+  return (await z).getAll('comments').then((t) => {
     if (t.length)
       for (let n = 0; n < t.length; n++) {
         const r = document.createElement('user-comment');
@@ -667,19 +627,18 @@ async function me(e) {
           r.setAttribute('data', t[n].data),
           e.append(r);
       }
-    console.log(t);
   });
 }
-async function he() {
-  await ae('myDB', {
+async function me() {
+  await ce('myDB', {
     blocked() {
       console.log('deletions is successful');
     },
   });
 }
-const pe = J({
+const he = Q({
   onNeedRefresh() {
-    pe(), console.log('Need Refresh');
+    he(), console.log('Need Refresh');
   },
   onOfflineReady() {
     console.log('Offline Ready');
@@ -691,15 +650,15 @@ const pe = J({
     console.log('Register Error'), console.error(e);
   },
 });
-window.customElements.define('user-comment', de);
-const ge = document.querySelector('.main_container'),
+window.customElements.define('user-comment', X);
+const pe = document.querySelector('.main_container'),
   ve = document.querySelector('#form'),
   M = document.querySelector('#username'),
   b = document.querySelector('#email'),
   E = document.querySelector('#comment'),
   S = document.querySelector('#input-checkbox'),
-  ye = document.querySelector('#clear_bnt'),
-  g = (e, t) => {
+  ge = document.querySelector('#clear_bnt'),
+  v = (e, t) => {
     const n = e.parentElement,
       r = n.querySelector('.error');
     (r.innerText = t), n.classList.add('error'), n.classList.remove('success');
@@ -713,22 +672,22 @@ const ge = document.querySelector('.main_container'),
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
       String(e).toLowerCase()
     ),
-  we = (e, t, n) => {
-    e === '' ? g(M, 'Username is required') : w(M),
+  ye = (e, t, n) => {
+    e === '' ? v(M, 'Username is required') : w(M),
       t === ''
-        ? g(b, 'Email is required')
+        ? v(b, 'Email is required')
         : F(t)
         ? w(b)
-        : g(b, 'Provide a valid email address');
+        : v(b, 'Provide a valid email address');
     const o = 30 - n.length;
     o === 30
-      ? g(E, 'Comments is required')
+      ? v(E, 'Comments is required')
       : o > 0
-      ? g(E, `${o} more characters required`)
+      ? v(E, `${o} more characters required`)
       : w(E),
       S.checked
         ? w(S)
-        : g(S, "Can't proceed as you didn't agree to the terms!");
+        : v(S, "Can't proceed as you didn't agree to the terms!");
   };
 ve.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -737,11 +696,11 @@ ve.addEventListener('submit', (e) => {
     r = E.value.trim(),
     o = new Date().toString().slice(0, 15);
   !t || !n || !F(n) || r.length <= 30 || !S.checked
-    ? we(t, n, r)
-    : (fe({ usernameValue: t, emailValue: n, commentValue: r, data: o }, n),
+    ? ye(t, n, r)
+    : (de({ usernameValue: t, emailValue: n, commentValue: r, data: o }, n),
       window.location.reload());
 });
-ye.addEventListener('click', () => {
-  he(), window.location.reload();
+ge.addEventListener('click', () => {
+  me(), window.location.reload();
 });
-me(ge);
+fe(pe);

@@ -1309,7 +1309,7 @@ class Je extends k {
 Re();
 ze(new Je());
 xe([
-  { revision: '0cb3b7efa233863aefae211fe6f07c8b', url: 'index.html' },
+  { revision: 'a4887e72a3a8457b7eca47a44225b5b7', url: 'index.html' },
   { revision: '23cb7a8d26a2a087528dc4ecab31c89c', url: 'offline.html' },
   { revision: '81029f649487a3cf48047fbc247ec98f', url: 'manifest.webmanifest' },
 ]);

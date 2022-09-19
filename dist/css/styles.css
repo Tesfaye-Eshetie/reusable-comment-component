@@ -56,7 +56,7 @@ body {
   align-items: center;
   background-color: var(--clr-light);
   color: var(--clr-dark);
-  width: 80%;
+  width: 90%;
   padding: 1.5rem;
   margin: 0 auto;
 }
@@ -66,7 +66,7 @@ body {
   align-items: center;
   background-color: var(--clr-light);
   color: var(--clr-dark);
-  width: 80%;
+  width: 90%;
   padding: 0.2rem 1.5rem;
   border-top: var(--clr-dark) solid 3px;
   margin: 1rem auto;
@@ -76,7 +76,7 @@ body {
   justify-content: space-evenly;
   align-items: center;
   background-color: var(--clr-light);
-  width: 80%;
+  width: 90%;
   min-height: 20rem;
   padding: 1.5rem;
 }
@@ -206,8 +206,65 @@ input[type='checkbox' i] {
   #form {
     flex-direction: column;
   }
-  #form,
+}
+@media (max-width: 40rem) {
+  #header h1 {
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+    padding: 1rem 0.5rem;
+  }
+  .main_container {
+    width: 100vw;
+    padding: 1rem;
+  }
   .main_container user-comment {
-    width: 100%;
+    width: 100vw;
+    padding: 0.2rem 1rem;
+  }
+  #form {
+    width: 100vw;
+    padding: 1rem;
+  }
+  #form_image {
+    margin: 1rem 0.5rem;
+  }
+  #form_image img {
+    width: 22rem;
+  }
+  #form_image h2 {
+    font-size: 1.4rem;
+  }
+  #form button {
+    font-size: 0.8rem;
+    padding: 0.8em 1em;
+  }
+  .input-flex,
+  .input-control #username,
+  .input-control #email,
+  .input-control #comment,
+  .input-check {
+    width: 22rem;
+  }
+  .footer__text {
+    padding: 1rem;
+  }
+}
+@media (max-width: 30rem) {
+  #form_image img {
+    width: 16rem;
+  }
+  #form_image h2 {
+    font-size: 1.2rem;
+  }
+  #form button {
+    font-size: 0.7rem;
+    padding: 0.6em 0.8em;
+  }
+  .input-flex,
+  .input-control #username,
+  .input-control #email,
+  .input-control #comment,
+  .input-check {
+    width: 16rem;
   }
 }

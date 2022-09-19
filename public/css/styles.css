@@ -258,7 +258,7 @@ input[type='checkbox' i] {
   }
   #form button {
     font-size: 0.7rem;
-    padding: 0.6em .8em;
+    padding: 0.6em 0.8em;
   }
   .input-flex,
   .input-control #username,
@@ -268,4 +268,3 @@ input[type='checkbox' i] {
     width: 16rem;
   }
 }
-
