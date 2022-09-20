@@ -13,9 +13,28 @@ export default defineConfig({
         type: 'module',
       },
       injectManifest: {
-        globPatterns: ['**/*.html'],
+        globPatterns: ['**/*.{css,html,js}'],
       },
-      manifest: {},
+      manifest: {
+        short_name: 'Reusable-Comment-Component',
+        name: "Tesfaye's Reusable-Comment-Component",
+        icons: [
+          {
+            src: '/images/logo.png',
+            type: 'image/png',
+            sizes: '1024x1024',
+          },
+          {
+            src: '/images/favicon.ico',
+            type: 'image/ico',
+            sizes: '100X77',
+          },
+        ],
+        start_url: '/reusable-comment-component/',
+        display: 'standalone',
+        theme_color: '#000000',
+        background_color: '#ffffff',
+      },
     }),
   ],
 });

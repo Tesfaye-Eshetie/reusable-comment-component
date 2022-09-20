@@ -1309,9 +1309,13 @@ class Je extends k {
 Re();
 ze(new Je());
 xe([
+  { revision: null, url: 'assets/index.603d06a7.js' },
+  { revision: '0648d7afda624b13600bb35db3fcd770', url: 'css/styles.css' },
   { revision: 'a4887e72a3a8457b7eca47a44225b5b7', url: 'index.html' },
-  { revision: '23cb7a8d26a2a087528dc4ecab31c89c', url: 'offline.html' },
-  { revision: '81029f649487a3cf48047fbc247ec98f', url: 'manifest.webmanifest' },
+  { revision: 'b7be6aa3c0cd78623f67b9a69629e1c6', url: 'offline.html' },
+  { revision: '6f098992a12bb49b61693daaaac7340a', url: 'images/logo.png' },
+  { revision: 'f2adb2a924b9efb89111f265b8839431', url: 'images/favicon.ico' },
+  { revision: '77c1ea0d51fab8e85c84dcbf24ca9ca9', url: 'manifest.webmanifest' },
 ]);
 $e();
 Ve();

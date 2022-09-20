@@ -1,9 +1,14 @@
 {
-  "name": "reusable-comment-component",
-  "short_name": "reusable-comment-component",
+  "name": "Tesfaye's Reusable-Comment-Component",
+  "short_name": "Reusable-Comment-Component",
   "start_url": "/reusable-comment-component/",
   "display": "standalone",
   "background_color": "#ffffff",
   "lang": "en",
-  "scope": "/reusable-comment-component/"
+  "scope": "/reusable-comment-component/",
+  "icons": [
+    { "src": "/images/logo.png", "type": "image/png", "sizes": "1024x1024" },
+    { "src": "/images/favicon.ico", "type": "image/ico", "sizes": "100X77" }
+  ],
+  "theme_color": "#000000"
 }
