@@ -2,7 +2,6 @@ import { VitePWA } from 'vite-plugin-pwa';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/reusable-comment-component/',
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
@@ -36,7 +35,7 @@ export default defineConfig({
             sizes: '1024x1024',
           },
         ],
-        start_url: '/reusable-comment-component/',
+        start_url: '.',
         display: 'standalone',
         background_color: '#ffffff',
         theme_color: '#000000',
