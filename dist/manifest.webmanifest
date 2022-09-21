@@ -7,8 +7,18 @@
   "lang": "en",
   "scope": "/reusable-comment-component/",
   "icons": [
-    { "src": "/images/logo.png", "type": "image/png", "sizes": "1024x1024" },
-    { "src": "/images/favicon.ico", "type": "image/ico", "sizes": "100X77" }
+    {
+      "src": "/images/logo_192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    { "src": "/images/logo_512.png", "type": "image/png", "sizes": "512x512" },
+    {
+      "src": "/images/logo_1024.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    }
   ],
   "theme_color": "#000000"
 }

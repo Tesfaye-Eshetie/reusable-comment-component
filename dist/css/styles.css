@@ -56,7 +56,7 @@ body {
   align-items: center;
   background-color: var(--clr-light);
   color: var(--clr-dark);
-  width: 90%;
+  width: 90vw;
   padding: 1.5rem;
   margin: 0 auto;
 }
@@ -218,11 +218,11 @@ input[type='checkbox' i] {
     padding: 1rem;
   }
   .main_container user-comment {
-    width: 100vw;
-    padding: 0.2rem 1rem;
+    width: 100%;
+    padding: 0.2rem 0.5rem;
   }
   #form {
-    width: 100vw;
+    width: 100%;
     padding: 1rem;
   }
   #form_image {

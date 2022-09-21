@@ -1309,13 +1309,14 @@ class Je extends k {
 Re();
 ze(new Je());
 xe([
-  { revision: null, url: 'assets/index.603d06a7.js' },
-  { revision: '0648d7afda624b13600bb35db3fcd770', url: 'css/styles.css' },
-  { revision: 'a4887e72a3a8457b7eca47a44225b5b7', url: 'index.html' },
-  { revision: 'b7be6aa3c0cd78623f67b9a69629e1c6', url: 'offline.html' },
-  { revision: '6f098992a12bb49b61693daaaac7340a', url: 'images/logo.png' },
-  { revision: 'f2adb2a924b9efb89111f265b8839431', url: 'images/favicon.ico' },
-  { revision: '77c1ea0d51fab8e85c84dcbf24ca9ca9', url: 'manifest.webmanifest' },
+  { revision: null, url: 'assets/index.fb6fa0ba.js' },
+  { revision: 'f6fcea47664fd12088de1672acded33a', url: 'css/styles.css' },
+  { revision: '02977c2608c9b4b801037f817f4f2cad', url: 'index.html' },
+  { revision: '6b4ada9aedc01fc313a2801dfe1ba7e4', url: 'offline.html' },
+  { revision: '6738945cf4ee1d08144afe4192877799', url: 'images/logo_192.png' },
+  { revision: 'f4fc547b48b8fe27cc2af90abf7b9989', url: 'images/logo_512.png' },
+  { revision: 'fd025e6dac1a5189c61f5edb252e7df5', url: 'images/logo_1024.png' },
+  { revision: 'cacf73b734ae294bf4a7dfb5670d4de7', url: 'manifest.webmanifest' },
 ]);
 $e();
 Ve();

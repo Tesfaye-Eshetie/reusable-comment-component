@@ -40,7 +40,7 @@ function W(e, t) {
       e.postMessage(t, [r.port2]);
   });
 }
-function K(e, t) {
+function z(e, t) {
   for (var n = 0; n < t.length; n++) {
     var r = t[n];
     (r.enumerable = r.enumerable || !1),
@@ -329,7 +329,7 @@ var J = (function (e) {
           return this.on.promise;
         },
       },
-    ]) && K(o.prototype, u),
+    ]) && z(o.prototype, u),
     r
   );
 })(
@@ -388,38 +388,32 @@ function Q(e = {}) {
 }
 const U = document.createElement('template');
 U.innerHTML = `
-<style>
-h3, h4 {
-  font-weight: bold;
-  margin: 1rem 0;
-}
-h3 {
-  font-size: 1.4rem;
-}
-p {
-  font-size: .9rem;
-  line-height: 1.4rem;
-}
-strong {
-  font-weight: bold;
-}
-#preference span {
-  min-width: 3rem;
-  display: inline-block;
-  text-align: center;
-}
-#preference {
-  font-weight: bold;
-  font-size: 1.4rem;
-}
-
-</style>
-  <div>
+  <style>
+    .comment_div {
+      width: 100%;
+      padding: 2rem;
+    }
+    h3, h4 {
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+    h3 {
+      font-size: 1.4rem;
+    }
+    p {
+      font-size: .9rem;
+      line-height: 1.4rem;
+    }
+    strong {
+      font-weight: bold;
+    }
+  </style>
+  <div class="comment_div">
     <h3></h3>
     <h4></h4>
     <p><strong>Comment:</strong> <span id='comment'></span></p>
     <p><strong>Commented on: </strong><span id='data'></span></p>
-    </div>`;
+  </div>`;
 class X extends HTMLElement {
   constructor() {
     super(),
@@ -461,7 +455,7 @@ function te() {
 const V = new WeakMap(),
   R = new WeakMap(),
   $ = new WeakMap(),
-  k = new WeakMap(),
+  B = new WeakMap(),
   j = new WeakMap();
 function ne(e) {
   const t = new Promise((n, r) => {
@@ -534,15 +528,15 @@ function ie(e) {
   return e === IDBDatabase.prototype.transaction &&
     !('objectStoreNames' in IDBTransaction.prototype)
     ? function (t, ...n) {
-        const r = e.call(B(this), t, ...n);
+        const r = e.call(C(this), t, ...n);
         return $.set(r, t.sort ? t.sort() : [t]), h(r);
       }
     : te().includes(e)
     ? function (...t) {
-        return e.apply(B(this), t), h(V.get(this));
+        return e.apply(C(this), t), h(V.get(this));
       }
     : function (...t) {
-        return h(e.apply(B(this), t));
+        return h(e.apply(C(this), t));
       };
 }
 function se(e) {
@@ -552,11 +546,11 @@ function se(e) {
 }
 function h(e) {
   if (e instanceof IDBRequest) return ne(e);
-  if (k.has(e)) return k.get(e);
+  if (B.has(e)) return B.get(e);
   const t = se(e);
-  return t !== e && (k.set(e, t), j.set(t, e)), t;
+  return t !== e && (B.set(e, t), j.set(t, e)), t;
 }
-const B = (e) => j.get(e);
+const C = (e) => j.get(e);
 function ae(e, t, { blocked: n, upgrade: r, blocking: o, terminated: u } = {}) {
   const s = indexedDB.open(e, t),
     f = h(s);
@@ -581,10 +575,10 @@ function ce(e, { blocked: t } = {}) {
 }
 const ue = ['get', 'getKey', 'getAll', 'getAllKeys', 'count'],
   le = ['put', 'add', 'delete', 'clear'],
-  C = new Map();
+  k = new Map();
 function N(e, t) {
   if (!(e instanceof IDBDatabase && !(t in e) && typeof t == 'string')) return;
-  if (C.get(t)) return C.get(t);
+  if (k.get(t)) return k.get(t);
   const n = t.replace(/FromIndex$/, ''),
     r = t !== n,
     o = le.includes(n);
@@ -601,23 +595,23 @@ function N(e, t) {
       (await Promise.all([i[n](...f), o && c.done]))[0]
     );
   };
-  return C.set(t, u), u;
+  return k.set(t, u), u;
 }
 oe((e) => ({
   ...e,
   get: (t, n, r) => N(t, n) || e.get(t, n, r),
   has: (t, n) => !!N(t, n) || e.has(t, n),
 }));
-const z = ae('myDB', 1, {
+const F = ae('myDB', 1, {
   upgrade(e) {
     e.createObjectStore('comments'), e.createObjectStore('performance');
   },
 });
 async function de(e, t) {
-  return (await z).put('comments', e, t);
+  return (await F).put('comments', e, t);
 }
 async function fe(e) {
-  return (await z).getAll('comments').then((t) => {
+  return (await F).getAll('comments').then((t) => {
     if (t.length)
       for (let n = 0; n < t.length; n++) {
         const r = document.createElement('user-comment');
@@ -668,7 +662,7 @@ const pe = document.querySelector('.main_container'),
       n = t.querySelector('.error');
     (n.innerText = ''), t.classList.add('success'), t.classList.remove('error');
   },
-  F = (e) =>
+  K = (e) =>
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
       String(e).toLowerCase()
     ),
@@ -676,7 +670,7 @@ const pe = document.querySelector('.main_container'),
     e === '' ? v(M, 'Username is required') : w(M),
       t === ''
         ? v(b, 'Email is required')
-        : F(t)
+        : K(t)
         ? w(b)
         : v(b, 'Provide a valid email address');
     const o = 30 - n.length;
@@ -695,7 +689,7 @@ ve.addEventListener('submit', (e) => {
     n = b.value.trim(),
     r = E.value.trim(),
     o = new Date().toString().slice(0, 15);
-  !t || !n || !F(n) || r.length <= 30 || !S.checked
+  !t || !n || !K(n) || r.length <= 30 || !S.checked
     ? ye(t, n, r)
     : (de({ usernameValue: t, emailValue: n, commentValue: r, data: o }, n),
       window.location.reload());
