@@ -1,11 +1,11 @@
 {
   "name": "Tesfaye's Reusable-Comment-Component",
   "short_name": "Reusable-Comment-Component",
-  "start_url": ".",
+  "start_url": "tesfaye-eshetie.github.io/reusable-comment-component/",
   "display": "standalone",
   "background_color": "#ffffff",
   "lang": "en",
-  "scope": "/",
+  "scope": "/tesfaye-eshetie.github.io/reusable-comment-component/",
   "icons": [
     {
       "src": "/images/logo_192.png",

@@ -2,6 +2,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  base: 'tesfaye-eshetie.github.io/reusable-comment-component/',
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
@@ -35,7 +36,7 @@ export default defineConfig({
             sizes: '1024x1024',
           },
         ],
-        start_url: '.',
+        start_url: 'tesfaye-eshetie.github.io/reusable-comment-component/',
         display: 'standalone',
         background_color: '#ffffff',
         theme_color: '#000000',
