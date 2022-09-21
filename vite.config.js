@@ -20,18 +20,18 @@ export default defineConfig({
         short_name: 'Reusable-Comment-Component',
         icons: [
           {
-            src: '/images/logo_192.png',
+            src: '/reusable-comment-component/images/logo_192.png',
             type: 'image/png',
             sizes: '192x192',
             purpose: 'maskable',
           },
           {
-            src: '/images/logo_512.png',
+            src: '/reusable-comment-component/images/logo_512.png',
             type: 'image/png',
             sizes: '512x512',
           },
           {
-            src: '/images/logo_1024.png',
+            src: '/reusable-comment-component/images/logo_1024.png',
             type: 'image/png',
             sizes: '1024x1024',
           },
