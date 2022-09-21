@@ -36,7 +36,7 @@ export default defineConfig({
             sizes: '1024x1024',
           },
         ],
-        start_url: '.',
+        start_url: '/reusable-comment-component/',
         display: 'standalone',
         background_color: '#ffffff',
         theme_color: '#000000',

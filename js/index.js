@@ -1,6 +1,6 @@
 import { registerSW } from 'virtual:pwa-register';
-import userComment from './component/userComment';
-import { postComments, getComments, deleteMyDB } from './idb/indexedDB';
+import userComment from '/js/component/userComment';
+import { postComments, getComments, deleteMyDB } from '/js/idb/indexedDB';
 
 const updateSw = registerSW({
   onNeedRefresh() {
