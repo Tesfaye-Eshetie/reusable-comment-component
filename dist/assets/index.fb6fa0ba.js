@@ -368,13 +368,10 @@ function Q(e = {}) {
   const f = async (c = !0) => {};
   return (
     'serviceWorker' in navigator &&
-      ((s = new J(
-        '/tesfaye-eshetie.github.io/reusable-comment-component/./sw.js',
-        {
-          scope: '/tesfaye-eshetie.github.io/reusable-comment-component/',
-          type: 'classic',
-        }
-      )),
+      ((s = new J('/reusable-comment-component/./sw.js', {
+        scope: '/reusable-comment-component/',
+        type: 'classic',
+      })),
       s.addEventListener('activated', (c) => {
         c.isUpdate ? window.location.reload() : r == null || r();
       }),
