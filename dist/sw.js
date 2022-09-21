@@ -1316,7 +1316,7 @@ xe([
   { revision: '6738945cf4ee1d08144afe4192877799', url: 'images/logo_192.png' },
   { revision: 'f4fc547b48b8fe27cc2af90abf7b9989', url: 'images/logo_512.png' },
   { revision: 'fd025e6dac1a5189c61f5edb252e7df5', url: 'images/logo_1024.png' },
-  { revision: 'cacf73b734ae294bf4a7dfb5670d4de7', url: 'manifest.webmanifest' },
+  { revision: '7e0d3f11f53fda1b39dacb8752aba251', url: 'manifest.webmanifest' },
 ]);
 $e();
 Ve();
