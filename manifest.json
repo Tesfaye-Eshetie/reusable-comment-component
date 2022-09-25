@@ -1,0 +1,26 @@
+{
+  "short_name": "Reusable-Comment-Component",
+  "name": "Tesfaye's Reusable-Comment-Component-PWA",
+  "icons": [
+    {
+      "src": "images/logo_192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "images/logo_512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "images/logo_1024.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
