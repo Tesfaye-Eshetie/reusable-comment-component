@@ -1309,11 +1309,14 @@ class Je extends k {
 Re();
 ze(new Je());
 xe([
-  { revision: null, url: 'assets/index.fb6fa0ba.js' },
+  { revision: null, url: 'assets/index.1ecc5424.js' },
   { revision: 'f6fcea47664fd12088de1672acded33a', url: 'css/styles.css' },
-  { revision: '5ee5c122fd0c267b9a491f1cc60a71c0', url: 'index.html' },
+  { revision: '449e2904d22913c5c8120ed9443e14dc', url: 'index.html' },
   { revision: '6b4ada9aedc01fc313a2801dfe1ba7e4', url: 'offline.html' },
-  { revision: 'b63d5253527ad3576941e8f49c4ff2d6', url: 'manifest.webmanifest' },
+  { revision: '6738945cf4ee1d08144afe4192877799', url: 'images/logo_192.png' },
+  { revision: 'f4fc547b48b8fe27cc2af90abf7b9989', url: 'images/logo_512.png' },
+  { revision: 'fd025e6dac1a5189c61f5edb252e7df5', url: 'images/logo_1024.png' },
+  { revision: 'de3d4c6c0e0dffb66e70d9b89f9006ba', url: 'manifest.webmanifest' },
 ]);
 $e();
 Ve();

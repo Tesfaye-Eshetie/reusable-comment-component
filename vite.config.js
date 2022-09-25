@@ -2,7 +2,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/reusable-comment-component/',
+  base: '/',
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
@@ -20,23 +20,23 @@ export default defineConfig({
         short_name: 'Reusable-Comment-Component',
         icons: [
           {
-            src: '/reusable-comment-component/images/logo_192.png',
+            src: 'images/logo_192.png',
             type: 'image/png',
             sizes: '192x192',
             purpose: 'maskable',
           },
           {
-            src: '/reusable-comment-component/images/logo_512.png',
+            src: 'images/logo_512.png',
             type: 'image/png',
             sizes: '512x512',
           },
           {
-            src: '/reusable-comment-component/images/logo_1024.png',
+            src: 'images/logo_1024.png',
             type: 'image/png',
             sizes: '1024x1024',
           },
         ],
-        start_url: '/reusable-comment-component/',
+        start_url: '/',
         display: 'standalone',
         background_color: '#ffffff',
         theme_color: '#000000',
