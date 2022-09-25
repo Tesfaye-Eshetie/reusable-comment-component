@@ -129,62 +129,62 @@ var J = (function (e) {
       (i.un = 0),
       (i.an = new Set()),
       (i.cn = function () {
-        var d = i.fn,
-          l = d.installing;
-        i.tn > 0 ||
-        !I(l.scriptURL, i.sn.toString()) ||
-        performance.now() > i.un + 6e4
-          ? ((i.vn = l), d.removeEventListener('updatefound', i.cn))
-          : ((i.hn = l), i.an.add(l), i.rn.resolve(l)),
-          ++i.tn,
-          l.addEventListener('statechange', i.ln);
-      }),
-      (i.ln = function (d) {
         var l = i.fn,
-          m = d.target,
-          p = m.state,
+          d = l.installing;
+        i.tn > 0 ||
+        !I(d.scriptURL, i.sn.toString()) ||
+        performance.now() > i.un + 6e4
+          ? ((i.vn = d), l.removeEventListener('updatefound', i.cn))
+          : ((i.hn = d), i.an.add(d), i.rn.resolve(d)),
+          ++i.tn,
+          d.addEventListener('statechange', i.ln);
+      }),
+      (i.ln = function (l) {
+        var d = i.fn,
+          m = l.target,
+          v = m.state,
           L = m === i.vn,
-          D = { sw: m, isExternal: L, originalEvent: d };
+          D = { sw: m, isExternal: L, originalEvent: l };
         !L && i.mn && (D.isUpdate = !0),
-          i.dispatchEvent(new g(p, D)),
-          p === 'installed'
+          i.dispatchEvent(new g(v, D)),
+          v === 'installed'
             ? (i.wn = self.setTimeout(function () {
-                p === 'installed' &&
-                  l.waiting === m &&
+                v === 'installed' &&
+                  d.waiting === m &&
                   i.dispatchEvent(new g('waiting', D));
               }, 200))
-            : p === 'activating' && (clearTimeout(i.wn), L || i.en.resolve(m));
+            : v === 'activating' && (clearTimeout(i.wn), L || i.en.resolve(m));
       }),
-      (i.dn = function (d) {
-        var l = i.hn,
-          m = l !== navigator.serviceWorker.controller;
+      (i.dn = function (l) {
+        var d = i.hn,
+          m = d !== navigator.serviceWorker.controller;
         i.dispatchEvent(
           new g('controlling', {
             isExternal: m,
-            originalEvent: d,
-            sw: l,
+            originalEvent: l,
+            sw: d,
             isUpdate: i.mn,
           })
         ),
-          m || i.on.resolve(l);
+          m || i.on.resolve(d);
       }),
       (i.gn =
-        ((a = function (d) {
-          var l = d.data,
-            m = d.ports,
-            p = d.source;
+        ((a = function (l) {
+          var d = l.data,
+            m = l.ports,
+            v = l.source;
           return y(i.getSW(), function () {
-            i.an.has(p) &&
+            i.an.has(v) &&
               i.dispatchEvent(
-                new g('message', { data: l, originalEvent: d, ports: m, sw: p })
+                new g('message', { data: d, originalEvent: l, ports: m, sw: v })
               );
           });
         }),
         function () {
-          for (var d = [], l = 0; l < arguments.length; l++)
-            d[l] = arguments[l];
+          for (var l = [], d = 0; d < arguments.length; d++)
+            l[d] = arguments[d];
           try {
-            return Promise.resolve(a.apply(this, d));
+            return Promise.resolve(a.apply(this, l));
           } catch (m) {
             return Promise.reject(m);
           }
@@ -208,15 +208,15 @@ var J = (function (e) {
         i = c !== void 0 && c;
       try {
         var a = this;
-        return (function (d, l) {
-          var m = d();
-          return m && m.then ? m.then(l) : l(m);
+        return (function (l, d) {
+          var m = l();
+          return m && m.then ? m.then(d) : d(m);
         })(
           function () {
             if (!i && document.readyState !== 'complete')
               return q(
-                new Promise(function (d) {
-                  return window.addEventListener('load', d);
+                new Promise(function (l) {
+                  return window.addEventListener('load', l);
                 })
               );
           },
@@ -224,23 +224,23 @@ var J = (function (e) {
             return (
               (a.mn = Boolean(navigator.serviceWorker.controller)),
               (a.yn = a.pn()),
-              y(a.bn(), function (d) {
-                (a.fn = d),
+              y(a.bn(), function (l) {
+                (a.fn = l),
                   a.yn &&
                     ((a.hn = a.yn),
                     a.en.resolve(a.yn),
                     a.on.resolve(a.yn),
                     a.yn.addEventListener('statechange', a.ln, { once: !0 }));
-                var l = a.fn.waiting;
+                var d = a.fn.waiting;
                 return (
-                  l &&
-                    I(l.scriptURL, a.sn.toString()) &&
-                    ((a.hn = l),
+                  d &&
+                    I(d.scriptURL, a.sn.toString()) &&
+                    ((a.hn = d),
                     Promise.resolve()
                       .then(function () {
                         a.dispatchEvent(
                           new g('waiting', {
-                            sw: l,
+                            sw: d,
                             wasWaitingBeforeRegister: !0,
                           })
                         );
@@ -258,8 +258,8 @@ var J = (function (e) {
             );
           }
         );
-      } catch (d) {
-        return Promise.reject(d);
+      } catch (l) {
+        return Promise.reject(l);
       }
     }),
     (s.update = function () {
@@ -294,8 +294,8 @@ var J = (function (e) {
         return (function (c, i) {
           try {
             var a = c();
-          } catch (d) {
-            return i(d);
+          } catch (l) {
+            return i(l);
           }
           return a && a.then ? a.then(void 0, i) : a;
         })(
@@ -571,14 +571,14 @@ function ce(e, { blocked: t } = {}) {
   return t && n.addEventListener('blocked', () => t()), h(n).then(() => {});
 }
 const ue = ['get', 'getKey', 'getAll', 'getAllKeys', 'count'],
-  le = ['put', 'add', 'delete', 'clear'],
+  de = ['put', 'add', 'delete', 'clear'],
   k = new Map();
 function N(e, t) {
   if (!(e instanceof IDBDatabase && !(t in e) && typeof t == 'string')) return;
   if (k.get(t)) return k.get(t);
   const n = t.replace(/FromIndex$/, ''),
     r = t !== n,
-    o = le.includes(n);
+    o = de.includes(n);
   if (
     !(n in (r ? IDBIndex : IDBObjectStore).prototype) ||
     !(o || ue.includes(n))
@@ -601,10 +601,10 @@ oe((e) => ({
 }));
 const F = ae('myDB', 1, {
   upgrade(e) {
-    e.createObjectStore('comments'), e.createObjectStore('performance');
+    e.createObjectStore('comments');
   },
 });
-async function de(e, t) {
+async function le(e, t) {
   return (await F).put('comments', e, t);
 }
 async function fe(e) {
@@ -642,14 +642,14 @@ const he = Q({
   },
 });
 window.customElements.define('user-comment', X);
-const pe = document.querySelector('.main_container'),
-  ve = document.querySelector('#form'),
+const ve = document.querySelector('.main_container'),
+  pe = document.querySelector('#form'),
   M = document.querySelector('#username'),
   b = document.querySelector('#email'),
   E = document.querySelector('#comment'),
   S = document.querySelector('#input-checkbox'),
   ge = document.querySelector('#clear_bnt'),
-  v = (e, t) => {
+  p = (e, t) => {
     const n = e.parentElement,
       r = n.querySelector('.error');
     (r.innerText = t), n.classList.add('error'), n.classList.remove('success');
@@ -664,23 +664,23 @@ const pe = document.querySelector('.main_container'),
       String(e).toLowerCase()
     ),
   ye = (e, t, n) => {
-    e === '' ? v(M, 'Username is required') : w(M),
+    e === '' ? p(M, 'Username is required') : w(M),
       t === ''
-        ? v(b, 'Email is required')
+        ? p(b, 'Email is required')
         : K(t)
         ? w(b)
-        : v(b, 'Provide a valid email address');
+        : p(b, 'Provide a valid email address');
     const o = 30 - n.length;
     o === 30
-      ? v(E, 'Comments is required')
+      ? p(E, 'Comments is required')
       : o > 0
-      ? v(E, `${o} more characters required`)
+      ? p(E, `${o} more characters required`)
       : w(E),
       S.checked
         ? w(S)
-        : v(S, "Can't proceed as you didn't agree to the terms!");
+        : p(S, "Can't proceed as you didn't agree to the terms!");
   };
-ve.addEventListener('submit', (e) => {
+pe.addEventListener('submit', (e) => {
   e.preventDefault();
   const t = M.value.trim(),
     n = b.value.trim(),
@@ -688,10 +688,10 @@ ve.addEventListener('submit', (e) => {
     o = new Date().toString().slice(0, 15);
   !t || !n || !K(n) || r.length <= 30 || !S.checked
     ? ye(t, n, r)
-    : (de({ usernameValue: t, emailValue: n, commentValue: r, data: o }, n),
+    : (le({ usernameValue: t, emailValue: n, commentValue: r, data: o }, n),
       window.location.reload());
 });
 ge.addEventListener('click', () => {
   me(), window.location.reload();
 });
-fe(pe);
+fe(ve);

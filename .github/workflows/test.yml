@@ -6,20 +6,10 @@ name: Test
 # On every code push and pull request, run this
 on: [push, pull_request]
 
-<<<<<<< HEAD
-=======
-on:
-  pull_request:
-  push:
-    branches: 
-      - main
-      - GitHub-action-hosting
->>>>>>> 0735ed2 (updated test.yml file)
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
     steps:
-<<<<<<< HEAD
       - uses: actions/checkout@v3 # Check out our code
 
       - name: Use Node.js 16 # Use Node 16
@@ -31,14 +21,3 @@ jobs:
       - run: npm ci # Install our node modules
       - run: npm test # Run our test script
       - run: npm run build # Run our build script
-=======
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install
-      - install: npm ci # Install our node modules
-      - test: npm test # Run our test script
-      - build: npm run build # Run our build script
->>>>>>> 0735ed2 (updated test.yml file)
