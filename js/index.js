@@ -1,23 +1,14 @@
-import { registerSW } from 'virtual:pwa-register';
 import userComment from '/js/component/userComment';
 import { postComments, getComments, deleteMyDB } from '/js/idb/indexedDB';
 
-const updateSw = registerSW({
-  onNeedRefresh() {
-    updateSw();
-    console.log('Need Refresh');
-  },
-  onOfflineReady() {
-    console.log('Offline Ready');
-  },
-  onRegistered() {
-    console.log('Registered');
-  },
-  onRegisterError(e) {
-    console.log('Register Error');
-    console.error(e);
-  },
-});
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('./serviceworker.js')
+      .then((reg) => console.log('Success: ', reg.scope))
+      .catch((err) => console.log('Failure: ', err));
+  });
+}
 
 window.customElements.define('user-comment', userComment);
 
