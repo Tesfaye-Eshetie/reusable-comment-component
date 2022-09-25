@@ -7,7 +7,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       strategies: 'injectManifest',
-      filename: './sw.js',
+      filename: '/reusable-comment-component/sw.js',
       devOptions: {
         enabled: true,
         type: 'module',
