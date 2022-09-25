@@ -3,7 +3,6 @@ import { openDB, deleteDB } from 'idb';
 export const database = openDB('myDB', 1, {
   upgrade(db) {
     db.createObjectStore('comments');
-    db.createObjectStore('performance');
   },
 });
 
