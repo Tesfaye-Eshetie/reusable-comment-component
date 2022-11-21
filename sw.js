@@ -4,7 +4,7 @@ self.addEventListener('install', (event) => {
     caches.open('static').then((cache) => {
       console.log('Opened cache');
       return cache.addAll([
-        '/reusable-comment-component/',
+        '/',
         'index.html',
         'css/styles.css',
         'images/cute_dog.avif',
