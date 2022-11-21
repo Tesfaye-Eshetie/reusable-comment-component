@@ -275,7 +275,7 @@ async function H() {
 'serviceWorker' in navigator &&
   window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register('./serviceworker.js')
+      .register('./sw.js')
       .then((e) => console.log('Success: ', e.scope))
       .catch((e) => console.log('Failure: ', e));
   });
