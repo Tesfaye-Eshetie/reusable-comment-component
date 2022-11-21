@@ -11,19 +11,19 @@
     Description:  Reusable-comment-component PWA created with web-components,
     IndexedDB, vite, lint, and prettier."
     />
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/reusable-comment-component/images/favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/styles.css" />
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="apple-touch-icon" href="/images/logo_192.png" />
+    <link rel="stylesheet" href="/reusable-comment-component/css/styles.css" />
+    <link rel="manifest" href="/reusable-comment-component/manifest.json" />
+    <link rel="apple-touch-icon" href="/reusable-comment-component/images/logo_192.png" />
     
     <title>Tesfaye's Reusable-Comment-Component</title>
-    <script type="module" crossorigin src="/assets/index.2aaf0144.js"></script>
+    <script type="module" crossorigin src="/reusable-comment-component/assets/index.3f09449b.js"></script>
   </head>
   <body>
     <header id="header">
@@ -33,7 +33,7 @@
       <div class="main_container">
         <form id="form" action="/">
           <div id="form_image">
-            <img src="/images/cute_dog.avif" alt="cute dog" />
+            <img src="/reusable-comment-component/images/cute_dog.avif" alt="cute dog" />
             <h2>Please comment on picture</h2>
           </div>
           <div id="form_input">
@@ -89,5 +89,15 @@
     <footer class="footer">
       <h3 class="footer__text">Copyright, Tesfaye Eshetie, 2022</h3>
     </footer>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('./sw.js')
+            .then((reg) => console.log('Success: ', reg.scope))
+            .catch((err) => console.log('Failure: ', err));
+        });
+      }
+    </script>
   </body>
 </html>
