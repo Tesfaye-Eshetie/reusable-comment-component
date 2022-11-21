@@ -107,15 +107,15 @@ body {
   margin-top: 1rem;
   text-align: center;
   text-transform: uppercase;
-  background-color: #3498db;
+  background-color: #2379b2;
   border-radius: 0.6em;
   cursor: pointer;
-  border-color: #3498db;
-  color: #fff;
+  border-color: #2379b2;
+  color: var(--clr-light);
 }
 #form #clear_bnt {
-  background-color: #dd3333;
-  border-color: #dd3333;
+  background-color: #ab3a3a;
+  border-color: #ab3a3a;
 }
 #form button:hover,
 #form #clear_bnt:hover {
