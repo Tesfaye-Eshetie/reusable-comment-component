@@ -28,8 +28,8 @@
     fetch(o.href, s);
   }
 })();
-const C = document.createElement('template');
-C.innerHTML = `
+const v = document.createElement('template');
+v.innerHTML = `
   <style>
     .comment_div {
       width: 100%;
@@ -56,11 +56,11 @@ C.innerHTML = `
     <p><strong>Comment:</strong> <span id='comment'></span></p>
     <p><strong>Commented on: </strong><span id='data'></span></p>
   </div>`;
-class k extends HTMLElement {
+class x extends HTMLElement {
   constructor() {
     super(),
       this.attachShadow({ mode: 'open' }),
-      this.shadowRoot.appendChild(C.content.cloneNode(!0)),
+      this.shadowRoot.appendChild(v.content.cloneNode(!0)),
       (this.likeCount = this.shadowRoot.querySelector('#like'));
   }
   connectedCallback() {
@@ -76,18 +76,18 @@ class k extends HTMLElement {
         this.getAttribute('data'));
   }
 }
-const x = (e, t) => t.some((n) => e instanceof n);
-let L, S;
+const k = (e, t) => t.some((n) => e instanceof n);
+let S, B;
 function P() {
   return (
-    L ||
-    (L = [IDBDatabase, IDBObjectStore, IDBIndex, IDBCursor, IDBTransaction])
+    S ||
+    (S = [IDBDatabase, IDBObjectStore, IDBIndex, IDBCursor, IDBTransaction])
   );
 }
 function T() {
   return (
-    S ||
-    (S = [
+    B ||
+    (B = [
       IDBCursor.prototype.advance,
       IDBCursor.prototype.continue,
       IDBCursor.prototype.continuePrimaryKey,
@@ -95,11 +95,11 @@ function T() {
   );
 }
 const I = new WeakMap(),
-  b = new WeakMap(),
+  w = new WeakMap(),
   M = new WeakMap(),
   y = new WeakMap(),
-  v = new WeakMap();
-function j(e) {
+  L = new WeakMap();
+function V(e) {
   const t = new Promise((n, r) => {
     const o = () => {
         e.removeEventListener('success', s), e.removeEventListener('error', i);
@@ -118,12 +118,12 @@ function j(e) {
         n instanceof IDBCursor && I.set(n, e);
       })
       .catch(() => {}),
-    v.set(t, e),
+    L.set(t, e),
     t
   );
 }
-function V(e) {
-  if (b.has(e)) return;
+function j(e) {
+  if (w.has(e)) return;
   const t = new Promise((n, r) => {
     const o = () => {
         e.removeEventListener('complete', s),
@@ -140,12 +140,12 @@ function V(e) {
       e.addEventListener('error', i),
       e.addEventListener('abort', i);
   });
-  b.set(e, t);
+  w.set(e, t);
 }
 let D = {
   get(e, t, n) {
     if (e instanceof IDBTransaction) {
-      if (t === 'done') return b.get(e);
+      if (t === 'done') return w.get(e);
       if (t === 'objectStoreNames') return e.objectStoreNames || M.get(e);
       if (t === 'store')
         return n.objectStoreNames[1]
@@ -184,15 +184,15 @@ function O(e) {
 function R(e) {
   return typeof e == 'function'
     ? O(e)
-    : (e instanceof IDBTransaction && V(e), x(e, P()) ? new Proxy(e, D) : e);
+    : (e instanceof IDBTransaction && j(e), k(e, P()) ? new Proxy(e, D) : e);
 }
 function c(e) {
-  if (e instanceof IDBRequest) return j(e);
+  if (e instanceof IDBRequest) return V(e);
   if (y.has(e)) return y.get(e);
   const t = R(e);
-  return t !== e && (y.set(e, t), v.set(t, e)), t;
+  return t !== e && (y.set(e, t), L.set(t, e)), t;
 }
-const g = (e) => v.get(e);
+const g = (e) => L.get(e);
 function W(e, t, { blocked: n, upgrade: r, blocking: o, terminated: s } = {}) {
   const i = indexedDB.open(e, t),
     d = c(i);
@@ -217,10 +217,10 @@ function F(e, { blocked: t } = {}) {
 }
 const $ = ['get', 'getKey', 'getAll', 'getAllKeys', 'count'],
   z = ['put', 'add', 'delete', 'clear'],
-  w = new Map();
-function B(e, t) {
+  b = new Map();
+function C(e, t) {
   if (!(e instanceof IDBDatabase && !(t in e) && typeof t == 'string')) return;
-  if (w.get(t)) return w.get(t);
+  if (b.get(t)) return b.get(t);
   const n = t.replace(/FromIndex$/, ''),
     r = t !== n,
     o = z.includes(n);
@@ -237,12 +237,12 @@ function B(e, t) {
       (await Promise.all([p[n](...d), o && a.done]))[0]
     );
   };
-  return w.set(t, s), s;
+  return b.set(t, s), s;
 }
 N((e) => ({
   ...e,
-  get: (t, n, r) => B(t, n) || e.get(t, n, r),
-  has: (t, n) => !!B(t, n) || e.has(t, n),
+  get: (t, n, r) => C(t, n) || e.get(t, n, r),
+  has: (t, n) => !!C(t, n) || e.has(t, n),
 }));
 const q = W('myDB', 1, {
   upgrade(e) {
@@ -272,14 +272,7 @@ async function H() {
     },
   });
 }
-'serviceWorker' in navigator &&
-  window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register('./sw.js')
-      .then((e) => console.log('Success: ', e.scope))
-      .catch((e) => console.log('Failure: ', e));
-  });
-window.customElements.define('user-comment', k);
+window.customElements.define('user-comment', x);
 const Z = document.querySelector('.main_container'),
   U = document.querySelector('#form'),
   E = document.querySelector('#username'),
