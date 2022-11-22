@@ -1,35 +1,35 @@
 (function () {
   const t = document.createElement('link').relList;
   if (t && t.supports && t.supports('modulepreload')) return;
-  for (const o of document.querySelectorAll('link[rel="modulepreload"]')) r(o);
-  new MutationObserver((o) => {
-    for (const s of o)
+  for (const r of document.querySelectorAll('link[rel="modulepreload"]')) o(r);
+  new MutationObserver((r) => {
+    for (const s of r)
       if (s.type === 'childList')
         for (const i of s.addedNodes)
-          i.tagName === 'LINK' && i.rel === 'modulepreload' && r(i);
+          i.tagName === 'LINK' && i.rel === 'modulepreload' && o(i);
   }).observe(document, { childList: !0, subtree: !0 });
-  function n(o) {
+  function n(r) {
     const s = {};
     return (
-      o.integrity && (s.integrity = o.integrity),
-      o.referrerpolicy && (s.referrerPolicy = o.referrerpolicy),
-      o.crossorigin === 'use-credentials'
+      r.integrity && (s.integrity = r.integrity),
+      r.referrerpolicy && (s.referrerPolicy = r.referrerpolicy),
+      r.crossorigin === 'use-credentials'
         ? (s.credentials = 'include')
-        : o.crossorigin === 'anonymous'
+        : r.crossorigin === 'anonymous'
         ? (s.credentials = 'omit')
         : (s.credentials = 'same-origin'),
       s
     );
   }
-  function r(o) {
-    if (o.ep) return;
-    o.ep = !0;
-    const s = n(o);
-    fetch(o.href, s);
+  function o(r) {
+    if (r.ep) return;
+    r.ep = !0;
+    const s = n(r);
+    fetch(r.href, s);
   }
 })();
-const v = document.createElement('template');
-v.innerHTML = `
+const B = document.createElement('template');
+B.innerHTML = `
   <style>
     .comment_div {
       width: 100%;
@@ -56,11 +56,11 @@ v.innerHTML = `
     <p><strong>Comment:</strong> <span id='comment'></span></p>
     <p><strong>Commented on: </strong><span id='data'></span></p>
   </div>`;
-class x extends HTMLElement {
+class A extends HTMLElement {
   constructor() {
     super(),
       this.attachShadow({ mode: 'open' }),
-      this.shadowRoot.appendChild(v.content.cloneNode(!0)),
+      this.shadowRoot.appendChild(B.content.cloneNode(!0)),
       (this.likeCount = this.shadowRoot.querySelector('#like'));
   }
   connectedCallback() {
@@ -76,18 +76,18 @@ class x extends HTMLElement {
         this.getAttribute('data'));
   }
 }
-const k = (e, t) => t.some((n) => e instanceof n);
-let S, B;
+const x = (e, t) => t.some((n) => e instanceof n);
+let L, S;
 function P() {
   return (
-    S ||
-    (S = [IDBDatabase, IDBObjectStore, IDBIndex, IDBCursor, IDBTransaction])
+    L ||
+    (L = [IDBDatabase, IDBObjectStore, IDBIndex, IDBCursor, IDBTransaction])
   );
 }
 function T() {
   return (
-    B ||
-    (B = [
+    S ||
+    (S = [
       IDBCursor.prototype.advance,
       IDBCursor.prototype.continue,
       IDBCursor.prototype.continuePrimaryKey,
@@ -95,20 +95,20 @@ function T() {
   );
 }
 const I = new WeakMap(),
-  w = new WeakMap(),
-  M = new WeakMap(),
+  b = new WeakMap(),
+  q = new WeakMap(),
   y = new WeakMap(),
-  L = new WeakMap();
-function V(e) {
-  const t = new Promise((n, r) => {
-    const o = () => {
+  v = new WeakMap();
+function N(e) {
+  const t = new Promise((n, o) => {
+    const r = () => {
         e.removeEventListener('success', s), e.removeEventListener('error', i);
       },
       s = () => {
-        n(c(e.result)), o();
+        n(c(e.result)), r();
       },
       i = () => {
-        r(e.error), o();
+        o(e.error), r();
       };
     e.addEventListener('success', s), e.addEventListener('error', i);
   });
@@ -118,35 +118,35 @@ function V(e) {
         n instanceof IDBCursor && I.set(n, e);
       })
       .catch(() => {}),
-    L.set(t, e),
+    v.set(t, e),
     t
   );
 }
 function j(e) {
-  if (w.has(e)) return;
-  const t = new Promise((n, r) => {
-    const o = () => {
+  if (b.has(e)) return;
+  const t = new Promise((n, o) => {
+    const r = () => {
         e.removeEventListener('complete', s),
           e.removeEventListener('error', i),
           e.removeEventListener('abort', i);
       },
       s = () => {
-        n(), o();
+        n(), r();
       },
       i = () => {
-        r(e.error || new DOMException('AbortError', 'AbortError')), o();
+        o(e.error || new DOMException('AbortError', 'AbortError')), r();
       };
     e.addEventListener('complete', s),
       e.addEventListener('error', i),
       e.addEventListener('abort', i);
   });
-  w.set(e, t);
+  b.set(e, t);
 }
 let D = {
   get(e, t, n) {
     if (e instanceof IDBTransaction) {
-      if (t === 'done') return w.get(e);
-      if (t === 'objectStoreNames') return e.objectStoreNames || M.get(e);
+      if (t === 'done') return b.get(e);
+      if (t === 'objectStoreNames') return e.objectStoreNames || q.get(e);
       if (t === 'store')
         return n.objectStoreNames[1]
           ? void 0
@@ -163,15 +163,15 @@ let D = {
       : t in e;
   },
 };
-function N(e) {
+function V(e) {
   D = e(D);
 }
 function O(e) {
   return e === IDBDatabase.prototype.transaction &&
     !('objectStoreNames' in IDBTransaction.prototype)
     ? function (t, ...n) {
-        const r = e.call(g(this), t, ...n);
-        return M.set(r, t.sort ? t.sort() : [t]), c(r);
+        const o = e.call(g(this), t, ...n);
+        return q.set(o, t.sort ? t.sort() : [t]), c(o);
       }
     : T().includes(e)
     ? function (...t) {
@@ -184,84 +184,84 @@ function O(e) {
 function R(e) {
   return typeof e == 'function'
     ? O(e)
-    : (e instanceof IDBTransaction && j(e), k(e, P()) ? new Proxy(e, D) : e);
+    : (e instanceof IDBTransaction && j(e), x(e, P()) ? new Proxy(e, D) : e);
 }
 function c(e) {
-  if (e instanceof IDBRequest) return V(e);
+  if (e instanceof IDBRequest) return N(e);
   if (y.has(e)) return y.get(e);
   const t = R(e);
-  return t !== e && (y.set(e, t), L.set(t, e)), t;
+  return t !== e && (y.set(e, t), v.set(t, e)), t;
 }
-const g = (e) => L.get(e);
-function W(e, t, { blocked: n, upgrade: r, blocking: o, terminated: s } = {}) {
+const g = (e) => v.get(e);
+function W(e, t, { blocked: n, upgrade: o, blocking: r, terminated: s } = {}) {
   const i = indexedDB.open(e, t),
-    d = c(i);
+    u = c(i);
   return (
-    r &&
+    o &&
       i.addEventListener('upgradeneeded', (a) => {
-        r(c(i.result), a.oldVersion, a.newVersion, c(i.transaction));
+        o(c(i.result), a.oldVersion, a.newVersion, c(i.transaction));
       }),
     n && i.addEventListener('blocked', () => n()),
-    d
+    u
       .then((a) => {
         s && a.addEventListener('close', () => s()),
-          o && a.addEventListener('versionchange', () => o());
+          r && a.addEventListener('versionchange', () => r());
       })
       .catch(() => {}),
-    d
+    u
   );
 }
 function F(e, { blocked: t } = {}) {
   const n = indexedDB.deleteDatabase(e);
   return t && n.addEventListener('blocked', () => t()), c(n).then(() => {});
 }
-const $ = ['get', 'getKey', 'getAll', 'getAllKeys', 'count'],
-  z = ['put', 'add', 'delete', 'clear'],
-  b = new Map();
+const _ = ['get', 'getKey', 'getAll', 'getAllKeys', 'count'],
+  $ = ['put', 'add', 'delete', 'clear'],
+  w = new Map();
 function C(e, t) {
   if (!(e instanceof IDBDatabase && !(t in e) && typeof t == 'string')) return;
-  if (b.get(t)) return b.get(t);
+  if (w.get(t)) return w.get(t);
   const n = t.replace(/FromIndex$/, ''),
-    r = t !== n,
-    o = z.includes(n);
+    o = t !== n,
+    r = $.includes(n);
   if (
-    !(n in (r ? IDBIndex : IDBObjectStore).prototype) ||
-    !(o || $.includes(n))
+    !(n in (o ? IDBIndex : IDBObjectStore).prototype) ||
+    !(r || _.includes(n))
   )
     return;
-  const s = async function (i, ...d) {
-    const a = this.transaction(i, o ? 'readwrite' : 'readonly');
+  const s = async function (i, ...u) {
+    const a = this.transaction(i, r ? 'readwrite' : 'readonly');
     let p = a.store;
     return (
-      r && (p = p.index(d.shift())),
-      (await Promise.all([p[n](...d), o && a.done]))[0]
+      o && (p = p.index(u.shift())),
+      (await Promise.all([p[n](...u), r && a.done]))[0]
     );
   };
-  return b.set(t, s), s;
+  return w.set(t, s), s;
 }
-N((e) => ({
+V((e) => ({
   ...e,
-  get: (t, n, r) => C(t, n) || e.get(t, n, r),
+  get: (t, n, o) => C(t, n) || e.get(t, n, o),
   has: (t, n) => !!C(t, n) || e.has(t, n),
 }));
-const q = W('myDB', 1, {
+const k = W('myDB', 1, {
   upgrade(e) {
     e.createObjectStore('comments');
   },
 });
-async function K(e, t) {
-  return (await q).put('comments', e, t);
+async function z(e, t) {
+  return (await k).put('comments', e, t);
 }
-async function _(e) {
-  return (await q).getAll('comments').then((t) => {
+async function K(e) {
+  return (await k).getAll('comments').then((t) => {
     if (t.length)
       for (let n = 0; n < t.length; n++) {
-        const r = document.createElement('user-comment');
-        r.setAttribute('name', t[n].usernameValue),
-          r.setAttribute('email', t[n].emailValue),
-          r.setAttribute('comment', t[n].commentValue),
-          r.setAttribute('data', t[n].data),
-          e.append(r);
+        const o = document.createElement('user-comment');
+        o.setAttribute('name', t[n].usernameValue),
+          o.setAttribute('email', t[n].emailValue),
+          o.setAttribute('comment', t[n].commentValue),
+          o.setAttribute('data', t[n].data),
+          e.append(o);
       }
   });
 }
@@ -272,57 +272,89 @@ async function H() {
     },
   });
 }
-window.customElements.define('user-comment', x);
+'serviceWorker' in navigator &&
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('./sw.js')
+      .then((e) => console.log('Success: ', e.scope))
+      .catch((e) => console.log('Failure: ', e));
+  });
+window.customElements.define('user-comment', A);
 const Z = document.querySelector('.main_container'),
   U = document.querySelector('#form'),
   E = document.querySelector('#username'),
   m = document.querySelector('#email'),
   f = document.querySelector('#comment'),
   h = document.querySelector('#input-checkbox'),
-  G = document.querySelector('#clear_bnt'),
-  u = (e, t) => {
+  Y = document.querySelector('#clear_bnt'),
+  d = (e, t) => {
     const n = e.parentElement,
-      r = n.querySelector('.error');
-    (r.innerText = t), n.classList.add('error'), n.classList.remove('success');
+      o = n.querySelector('.error');
+    (o.innerText = t), n.classList.add('error'), n.classList.remove('success');
   },
   l = (e) => {
     const t = e.parentElement,
       n = t.querySelector('.error');
     (n.innerText = ''), t.classList.add('success'), t.classList.remove('error');
   },
-  A = (e) =>
+  M = (e) =>
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
       String(e).toLowerCase()
     ),
-  J = (e, t, n) => {
-    e === '' ? u(E, 'Username is required') : l(E),
+  G = (e, t, n) => {
+    e === '' ? d(E, 'Username is required') : l(E),
       t === ''
-        ? u(m, 'Email is required')
-        : A(t)
+        ? d(m, 'Email is required')
+        : M(t)
         ? l(m)
-        : u(m, 'Provide a valid email address');
-    const o = 30 - n.length;
-    o === 30
-      ? u(f, 'Comments is required')
-      : o > 0
-      ? u(f, `${o} more characters required`)
+        : d(m, 'Provide a valid email address');
+    const r = 30 - n.length;
+    r === 30
+      ? d(f, 'Comments is required')
+      : r > 0
+      ? d(f, `${r} more characters required`)
       : l(f),
       h.checked
         ? l(h)
-        : u(h, "Can't proceed as you didn't agree to the terms!");
+        : d(h, "Can't proceed as you didn't agree to the terms!");
   };
 U.addEventListener('submit', (e) => {
   e.preventDefault();
   const t = E.value.trim(),
     n = m.value.trim(),
-    r = f.value.trim(),
-    o = new Date().toString().slice(0, 15);
-  !t || !n || !A(n) || r.length <= 30 || !h.checked
-    ? J(t, n, r)
-    : (K({ usernameValue: t, emailValue: n, commentValue: r, data: o }, n),
+    o = f.value.trim(),
+    r = new Date().toString().slice(0, 15);
+  !t || !n || !M(n) || o.length <= 30 || !h.checked
+    ? G(t, n, o)
+    : (z({ usernameValue: t, emailValue: n, commentValue: o, data: r }, n),
       window.location.reload());
 });
-G.addEventListener('click', () => {
+Y.addEventListener('click', () => {
   H(), window.location.reload();
 });
-_(Z);
+K(Z);
+(async () => {
+  const e = () => {
+      const o = new Notification('Tesfaye Portfolio', {
+        body: 'Click here to see my portfolio',
+        icon: '/images/logo_192.png',
+      });
+      setTimeout(() => {
+        o.close();
+      }, 1e4),
+        o.addEventListener('click', () => {
+          window.open('https://tesfayeeshetie.com/', '_blank');
+        });
+    },
+    t = () => {
+      const o = document.querySelector('.error');
+      (o.style.display = 'block'),
+        (o.textContent = 'You blocked the notifications');
+    };
+  let n = !1;
+  Notification.permission === 'granted'
+    ? (n = !0)
+    : Notification.permission !== 'denied' &&
+      (n = (await Notification.requestPermission()) === 'granted'),
+    n ? e() : t();
+})();
