@@ -1,3 +1,5 @@
+const self = this;
+
 // Install SW
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -8,6 +10,7 @@ self.addEventListener('install', (event) => {
         'index.html',
         'css/styles.css',
         'images/cute_dog.avif',
+        'images/favicon.ico',
         'js/index.js',
         'js/idb/indexedDB.js',
         'js/component/userComment.js',

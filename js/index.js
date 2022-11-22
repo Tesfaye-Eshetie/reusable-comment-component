@@ -110,7 +110,7 @@ getComments(container);
     // create a new notification
     const notification = new Notification('Tesfaye Portfolio', {
       body: 'Click here to see my portfolio',
-      icon: '/images/logo_192.png',
+      icon: '/images/favicon.ico',
     });
 
     // close the notification after 10 seconds

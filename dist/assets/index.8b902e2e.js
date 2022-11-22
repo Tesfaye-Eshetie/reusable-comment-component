@@ -337,7 +337,7 @@ K(Z);
   const e = () => {
       const o = new Notification('Tesfaye Portfolio', {
         body: 'Click here to see my portfolio',
-        icon: '/images/logo_192.png',
+        icon: '/images/favicon.ico',
       });
       setTimeout(() => {
         o.close();
